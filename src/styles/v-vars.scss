@@ -1,0 +1,51 @@
+// COLORS
+// Primary color
+// Component <BG=”yellow”>
+$BG-yel: #F4E041;
+
+// Secondary color
+// Component <BG=”blue”>
+$BG-blue: #00BDD3;
+
+// Background color
+// Component <BG=”light-gray”> 
+$BG-lt-gray: #F8F8F8;
+
+
+// Buttons text color
+$black87: rgba(0, 0, 0, 0.87);
+$white87: rgba(255, 255, 255, 0.87);
+
+
+// MAIN BUTTON styles
+// Normal
+$main-button-height: 34px;
+$main-button-width: 100px;
+$main-button-radius: calc($main-button-height / 2);
+
+$main-button-still-bg-color: $BG-yel;
+$main-button-still-text-color: $black87;
+// Hover
+$main-button-hover-bg-color: #FFE302;
+$main-button-hover-text-color: $black87;
+// Disabled
+$main-button-disabled-bg-color: #B4B4B4;
+$main-button-disabled-text-color: $white87;
+
+
+
+
+
+// FONTS
+// Component <Heading=«h1»> «normal»> 
+@mixin h1 {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 40px;
+}
+// Component <Text=”p1”> 
+@mixin p1 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+}

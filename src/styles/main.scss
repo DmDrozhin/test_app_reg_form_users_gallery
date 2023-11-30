@@ -1,0 +1,23 @@
+@import './v-vars';
+// @import './v-fonts';
+
+* {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+$site-height: 100vh;
+$site-width: 1980px;
+html {
+  height: $site-height;
+  height: -webkit-fill-available;
+}
+body {
+  height: 100%;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
+  width: 100%;
+  max-width: $site-width;
+}
