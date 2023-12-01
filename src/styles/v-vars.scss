@@ -1,30 +1,63 @@
+// GENERAL ADAPTATION MODE
+$sizes: ("sm":360px, "md":768px, "lg":1024px, "xl":2560px);
+
+@mixin media($minmax, $media) {
+  @each $size, $resolution in $sizes {
+    @if $media == $size {
+      @media only screen and (#{$minmax}-width: $resolution) {
+        @content;
+      }
+    }
+  }
+}
+
+// SCREEN SIZE & PADDINGS
+$screen360: 360px; // screen size sm
+$padding360: 16px; // padding for size sm
+
+$screen768: 768px; // screen size md
+$padding768: 32px; // padding for size md
+
+$screen1024: 1024px; // screen size lg
+$padding768: 58px; // padding for size lg
+// !!!for some reason right padding 56px and left 60px => ?err shift to right 2px
+$padding768-l: 60px; // ?
+$padding768-r: 56px; // ?
+
+$screen2560: 2560px; // screen size xl
+$padding2560: 695x; // padding for size xl
+
+@mixin container {
+  @include media('min', 'sm') { padding: 0 16px; }
+  @include media('min', 'md') { padding: 0 32px; }
+  @include media('min', 'lg') { padding: 0 56px 0 60px; }
+  @include media('min', 'xl') { padding: 0 695px; }
+}
+
+//BACKGROUND
+$bg-main-image: url('../assets/images/pexels-alexandr-podvalny-1227513.jpeg');
+$bg-dimmer: rgba(0, 0, 0, 0.325);
+
 // COLORS
 // Primary color
 // Component <BG=”yellow”>
-$BG-yel: #F4E041;
-
+$primary-color: #F4E041;
 // Secondary color
 // Component <BG=”blue”>
-$BG-blue: #00BDD3;
-
+$secondary-color: #00BDD3;
 // Background color
 // Component <BG=”light-gray”> 
-$BG-lt-gray: #F8F8F8;
-
-
-// Buttons text color
-$black87: rgba(0, 0, 0, 0.87);
-$white87: rgba(255, 255, 255, 0.87);
+$bg-color: #F8F8F8;
 
 
 // MAIN BUTTON styles
+// Buttons text color
+$black87: rgba(0, 0, 0, 0.87);
+$white87: rgba(255, 255, 255, 0.87);
 // Normal
-$main-button-height: 34px;
-$main-button-width: 100px;
-$main-button-radius: calc($main-button-height / 2);
-
-$main-button-still-bg-color: $BG-yel;
-$main-button-still-text-color: $black87;
+$main-button-padding: 4px 23px;
+$main-button-radius: 16px;
+$main-button-still-bg-color: $primary-color;
 // Hover
 $main-button-hover-bg-color: #FFE302;
 $main-button-hover-text-color: $black87;
@@ -32,20 +65,60 @@ $main-button-hover-text-color: $black87;
 $main-button-disabled-bg-color: #B4B4B4;
 $main-button-disabled-text-color: $white87;
 
+// ALL FIELDS styles
+$input-block-width: 328px;
+$input-brd-radius: 3px;
+$input-brd-color: #D0CFCF;
+$input-still-txt-color: #7E7E7E;
+$input-error-color: #CB3D40;
+$input-paddings: 14px 14px 14px 16px;
+//Component:  <Textarea type =”normal”>
+
+// UPLOAD button
+// Enabled state
+$upload-button-border-enabled: 1px solid $black87;
+$upload-button-padding: 14px 14px 14px 16px;
+// Enabled - filled state - the same
+// Error state
+$upload-button-border-error: 2px solid $input-error-color;
+
+// TEXT AREA field
+// Enabled state
+$txt-area-still-border: 1px solid $input-brd-color;
+$txt-area-txt-still-color: $input-still-txt-color;
+// Enabled - filled state
+$txt-area-txt-active-color: $black87;
+// Error state
+$txt-area-error-border: 1px solid $input-error-color;
+
 
 
 
 
 // FONTS
 // Component <Heading=«h1»> «normal»> 
-@mixin h1 {
+@mixin heading1 {
+  color: $black87;
   font-weight: 400;
   font-size: 40px;
   line-height: 40px;
 }
+@mixin heading2 {
+  color: $black87;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+}
 // Component <Text=”p1”> 
-@mixin p1 {
+@mixin body16 {
+  color: $black87;
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
+}
+@mixin body12 {
+  color: $black87;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
 }

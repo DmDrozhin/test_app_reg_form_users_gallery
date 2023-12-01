@@ -37,8 +37,8 @@ export default {
 @import '@/styles/main.scss';
 .ui-button-main, 
 .button {
-  width: $main-button-width;
-  height: $main-button-height;
+  width: fit-content;
+  padding: $main-button-padding;
   background-color: $main-button-still-bg-color;
   border-radius: $main-button-radius;
   display: flex;
@@ -48,8 +48,8 @@ export default {
     background-color: $main-button-hover-bg-color;
   }
   &__title {
-    color: $main-button-still-text-color;
-    @include p1;
+    @include body16;
+    text-transform: capitalize;
   }
   &__title:hover {
     color: $main-button-hover-text-color;
@@ -60,6 +60,7 @@ export default {
   pointer-events: none;
 }
 .disabled-txt {
-  color: $main-button-disabled-text-color;
+  @include body12;
+  color: $input-error-color;
 }
 </style>
