@@ -30,7 +30,7 @@ export default {
 @import '@/styles/main.scss';
 .ui-custom-input, 
 .input {
-  width: 100%;
+  // width: 100%;
   border: $txt-area-still-border;
   border-radius: 0 $input-brd-radius $input-brd-radius 0;
   border-left: none;

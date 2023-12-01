@@ -17,6 +17,7 @@
 // API
 // :isDisabled="false"
 // :title="'button txt'"
+// @buttonClick="handleClick()"
 export default {
   name: 'ui-button-main',
   data() {

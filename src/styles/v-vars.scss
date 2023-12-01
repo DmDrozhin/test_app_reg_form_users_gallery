@@ -1,42 +1,57 @@
 // GENERAL ADAPTATION MODE
 $sizes: ("sm":360px, "md":768px, "lg":1024px, "xl":2560px);
 
-@mixin media($minmax, $media) {
+@mixin media($min-max, $media) {
   @each $size, $resolution in $sizes {
     @if $media == $size {
-      @media only screen and (#{$minmax}-width: $resolution) {
+      @media only screen and (#{$min-max}-width: $resolution) {
         @content;
       }
     }
   }
 }
-
 // SCREEN SIZE & PADDINGS
-$screen360: 360px; // screen size sm
-$padding360: 16px; // padding for size sm
+@mixin gide-lines {
+  border-left: 1px dotted grey;
+  border-right: 1px dotted grey;
+}
+@mixin tech-mark {
+  @include media('min', 'sm') { background-color: #deca98; }
+  @include media('min', 'md') { background-color: #bf98de; }
+  @include media('min', 'lg') { background-color: #98dece; }
+  @include media('min', 'xl') { background-color: #de9898; }
+}
+// Main container
 
-$screen768: 768px; // screen size md
-$padding768: 32px; // padding for size md
+@mixin container-width {
+  // @media screen and (min-width: 360px) { width: 360px; };
+  // @media screen and (min-width: 768px) { width: 768px; };
+  // @media screen and (min-width: 1024px) { width: 1024px; };
+  // @media screen and (min-width: 2560px) { width: 1170px; };
+  @include media('min', 'sm') { width: 360px; }
+  @include media('min', 'md') { width: 768px; }
+  @include media('min', 'lg') { width: 1024px; }
+  @include media('min', 'xl') { width: 1170px; }
+}
 
-$screen1024: 1024px; // screen size lg
-$padding768: 58px; // padding for size lg
-// !!!for some reason right padding 56px and left 60px => ?err shift to right 2px
-$padding768-l: 60px; // ?
-$padding768-r: 56px; // ?
-
-$screen2560: 2560px; // screen size xl
-$padding2560: 695x; // padding for size xl
-
-@mixin container {
+@mixin container-paddings {
   @include media('min', 'sm') { padding: 0 16px; }
   @include media('min', 'md') { padding: 0 32px; }
   @include media('min', 'lg') { padding: 0 56px 0 60px; }
-  @include media('min', 'xl') { padding: 0 695px; }
+  @include media('min', 'xl') { padding: 0; }
 }
 
-//BACKGROUND
+@mixin header-height {
+  @include media('min', 'sm') { height: 500px }
+  @include media('min', 'md') { height: 500px }
+  @include media('min', 'lg') { height: 650px; }
+  @include media('min', 'xl') { height: 650px; }
+}
+
+//BACKGROUND IMAGE
 $bg-main-image: url('../assets/images/pexels-alexandr-podvalny-1227513.jpeg');
-$bg-dimmer: rgba(0, 0, 0, 0.325);
+$bg-main-icon: url('../assets/images/Logo.svg');
+$bg-dimmer: #00000080;
 
 // COLORS
 // Primary color
@@ -48,6 +63,8 @@ $secondary-color: #00BDD3;
 // Background color
 // Component <BG=”light-gray”> 
 $bg-color: #F8F8F8;
+// The very top strip h60px
+$strip-color: #161616;
 
 
 // MAIN BUTTON styles

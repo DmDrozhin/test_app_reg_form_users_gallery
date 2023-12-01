@@ -1,8 +1,8 @@
-@import './v-vars';
-// @import './v-fonts';
+@import './v-vars.scss';
+@import './v-fonts.scss';
 
 * {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito-Regular', sans-serif;
   font-size: 14px;
   padding: 0;
   margin: 0;
@@ -20,10 +20,8 @@ body {
   height: 100%;
   /* mobile viewport bug fix */
   min-height: -webkit-fill-available;
-  width: 100%;
   max-width: $site-width;
-  margin: 0 auto;
-
+  // margin: 0 auto;
 }
 
 RESETS
