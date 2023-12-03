@@ -30,7 +30,7 @@ export default {
   name: 'ui-comp-upload-block',
   data() {
     return{
-      isError: true,
+      isError: false,
       btnTitle: 'Upload',
       btnHint: 'error txt',
       placeholder: 'upload your photo',

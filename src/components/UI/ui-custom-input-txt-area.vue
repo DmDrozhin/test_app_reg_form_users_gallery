@@ -1,7 +1,8 @@
 <template>
   <div class="ui-custom-input-txt-area input">
     <div class="input__container">
-
+      
+      <!-- Not needed in this app -->
       <!-- <ui-hint-top
         class="input__hint-top"
         v-if="false"
@@ -34,7 +35,7 @@
 <script>
 // API
 // :isError="false"
-// :content="'upload your photo'"
+// :placeholder="'upload your photo'"
 import { mapGetters } from 'vuex'
 export default {
   name: 'ui-custom-input-txt-area',
@@ -67,13 +68,13 @@ export default {
       } else {
         return {
           'border-width': '1px 1px 1px 0',
-          'border-color': this.COLORS.normInp,
+          'border-color': this.COLORS.norm,
           // transform: 'translateY(1px)'
         }
       }
     },
 
-    currColor() { return this.isError ? this.COLORS.err : this.COLORS.norm },
+    currColor() { return this.isError ? this.COLORS.err : this.COLORS.grey7E },
 
   },
   methods: {
@@ -96,7 +97,8 @@ export default {
   }
   // ORIGINAL INP
   &__input {
-    width: 245px;
+    box-sizing: border-box;
+    width: 297px;
     height: 54px;
     display:block;
     resize: none;
@@ -104,9 +106,12 @@ export default {
     border-radius: 0 $input-brd-radius $input-brd-radius 0;
     // border-left: none;
     @include body16; // text style
-    color: #7E7E7E; // text still color
+    color: $grey7E;
     padding: $input-paddings;
     text-transform: capitalize;
+    &::placeholder {
+      color: $grey7E;
+    }
     &:focus {
       color: $black87;
       outline: none;

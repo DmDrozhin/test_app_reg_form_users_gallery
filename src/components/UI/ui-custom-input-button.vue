@@ -32,7 +32,7 @@ export default {
   name: 'ui-custom-input-button',
   props: {
     isError: { type: Boolean, default: true },
-    content: { type: String || Number, default: 'upload' },
+    content: { type: String||Number, default: 'upload' },
   },
   data() {
     return {
@@ -50,7 +50,8 @@ export default {
           'border-width': '2px',
           'border-style': 'solid',
           'border-color': this.COLORS.err,
-          'padding': '13px 13px 13px 15px'
+          'padding-top': '13px',
+          'padding-left': '15px',
         }
       } else {
         return {
@@ -61,7 +62,7 @@ export default {
       }
     },
     
-    currColor() { return this.isError ? this.COLORS.err : this.COLORS.norm },
+    currColor() { return this.isError ? this.COLORS.err : this.COLORS.grey7E },
 
   },
   methods: { handleClick() { this.$emit('buttonClick') } },
@@ -81,7 +82,7 @@ export default {
   
   // ORIGINAL INP
   &__input {
-    // box-sizing: border-box;
+    box-sizing: border-box;
     width: 83px;
     height: 54px;
     background: none;

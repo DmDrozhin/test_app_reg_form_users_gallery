@@ -1,28 +1,29 @@
 <template>
-  <div class="ui-custom-input-2 input">
+  <div class="ui-custom-input input">
     <div class="input__test-btn"><button @click="toggle">Toggle</button></div>
 
     <div class="input__container">
 
       <ui-hint-top
+        class="input__hint-top"
         v-if="isFocused"
-        class="input__hint"
         :isError="flag"
         :hint="hintTop"
         :color="currColor"
       ></ui-hint-top>
 
       <input 
-        type="text" 
-        :value="value" 
         class="input__input" 
+        type="normal"
+        :placeholder="placeholder"
+        
         :style="border"
         @focus="setFocus" 
         @blur="setFocus"
       >
 
       <ui-hint-bottom
-        class="input__hint"
+        class="input__hint-bottom"
         v-if="flag"
         :isError="flag"
         :hint="hintBottom"
@@ -36,26 +37,27 @@
 <script>
 // API
 // :isError="false"
-// :content="'upload your photo'"
+// :placeholder="'upload your photo'"
 import { mapGetters } from 'vuex'
 export default {
-  name: 'ui-custom-input-2',
+  name: 'ui-custom-input',
+  props: {
+    isError: { type: Boolean, default: true },
+    placeholder: { type: String||Number, default: 'upload' },
+  },
   data() {
     return {
       value: 'upload',
-      flag: true,
+      flag: false,
       hintTop: 'top label',
-      hintBottom: 'err txt',
+      hintBottom: 'error txt',
       isFocused: false
     }
   },
-  watch: {
-    isFocused(a, b) { console.log('new value =>', a, 'old value =>', b) }
-  },
-  props: {
-    isError: { type: Boolean, default: true },
-    content: { type: String || Number, default: 'upload' },
-  },
+  // watch: {
+  //   isFocused(a, b) { console.log('new value =>', a, 'old value =>', b) }
+  // },
+
   computed: {
     ...mapGetters([ 'COLORS' ]),
 
@@ -64,7 +66,6 @@ export default {
         return {
           'border-width': '2px',
           'border-style': 'solid',
-          // 'border-style': 'inset',
           'border-color': this.COLORS.err,
           'padding': '13px 13px 13px 15px'
         }
@@ -72,13 +73,13 @@ export default {
         return {
           'border-width': '1px',
           'border-style': 'solid',
-          'border-color': this.COLORS.normInp,
+          'border-color': this.COLORS.norm,
           // transform: 'translateY(1px)'
         }
       }
     },
 
-    currColor() { return this.flag ? this.COLORS.err : this.COLORS.norm },
+    currColor() { return this.flag ? this.COLORS.err : this.COLORS.grey7E },
 
   },
   methods: {
@@ -96,7 +97,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/main.scss';
 
-.ui-custom-input-2,
+.ui-custom-input,
 .input {
 
   position: relative; // temp
@@ -105,31 +106,34 @@ export default {
     position: absolute;
     top: 0px;
     left: -100px;
-    background-color: #ae8cda;
   }
 
-  &__container {
-    // position: relative;
-  }
+  // &__container { }
+  // &__hint-top { }
+  
   // ORIGINAL INP
   &__input {
-    width: 328px;
+    width: 380px;
     height: 54px;
-    border-radius: $input-brd-radius;
-    @include body16;
-    color: #7E7E7E;
     padding: $input-paddings;
+    border-radius: $input-brd-radius;
+
+    @include body16;
+    // color: $grey;
+    color: $black87;
     text-transform: capitalize;
+    &::placeholder {
+      color: $grey7E;
+    }
     &:focus {
-      color: $black87;
-      border-radius: $input-brd-radius;
-      border-width: 1px;
       outline: none;
+      color: $black87;
+    }
+    &:focus::placeholder {
+      color: $black87;
     }
   }
-  // &__hint {
-
-  // }
+  // &__hint-bottom { }
 }
 
 </style>

@@ -20,6 +20,7 @@ $bg-color2: #FFF;
 // Buttons text color
 $black87: #000000de;
 $white87: #ffffffde;
+$grey7E: #7E7E7E;
 $error: #CB3D40;
 
 // MAIN BUTTON styles
@@ -60,7 +61,7 @@ $input-left-pd-err: 15px;
 }
 // Component <Text=”p1”> 
 @mixin body16 {
-  color: $black87;
+  // color: $black87;
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;

@@ -21,13 +21,33 @@
             <div class="form__wrapper">
               <div class="form__title">{{ formTitle }}</div>
               <div class="form__container">
-                <div class="form__inputs-block">
+                <div class="form__inputs-block ui-inp">
+                  
+                  <ui-custom-input
+                    class="ui-inp__name"
+                    :isError="false"
+                    :placeholder="newPost.name"
+                  ></ui-custom-input>
+                  
+                  <ui-custom-input
+                    class="ui-inp__email"
+                    :isError="false"
+                    :placeholder="newPost.email"
+                  ></ui-custom-input>
+                  
+                  <ui-custom-input
+                    class="ui-inp__phone"
+                    :isError="false"
+                    :placeholder="newPost.phone"
+                  ></ui-custom-input>
+                  
+                  <ui-comp-upload-block
+                    class="ui-inp__upload-block"
+                    :isError="false"
+                    :placeholder="newPost.photo"
+                  ></ui-comp-upload-block>
                   <br><hr><br>
-                  <ui-comp-upload-block></ui-comp-upload-block>
-                  <br><br><hr><br><br>
-
-                  <ui-custom-input-2></ui-custom-input-2>
-                  <br><br><hr><br><br>
+                  
                 </div>
               </div>
             </div>
@@ -48,6 +68,14 @@ export default {
   data() {
     return {
       formTitle: 'Working with POST request',
+      newPost: {
+        id: '',
+        name: 'Name',
+        email: 'Email',
+        phone: 'Phone',
+        position: 'Frontend developer',
+        photo: 'photo url'
+      }      
     }
   },
   computed: {},
@@ -105,14 +133,30 @@ export default {
       &__title {
         text-align: center;
         @include heading1;
+        margin-bottom: 50px;
       }
       &__container {
-        box-sizing: content-box;
-        @include gide-lines;
-        width: 390px;
+
+        // @include gide-lines;
+        width: 380px;
         margin: auto;
       }
-      &__inputs-block {}
+      &__inputs-block, 
+      .ui-inp {
+        &__name {
+          margin-bottom: 50px;
+        }
+        &__email {
+          margin-bottom: 50px;
+        }
+        &__phone {
+          margin-bottom: 43px;
+        }
+        &__upload-block {
+          margin-bottom: 43px;
+
+        }
+      }
     }
   }
 }
