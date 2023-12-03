@@ -40,7 +40,7 @@ export default {
     top: -10px;
     left: 0;
     text-align: left;
-    padding-left: $input-left-pd-err;
+    padding-left: 14px;
 
     white-space: nowrap;
     overflow: hidden;
@@ -53,7 +53,7 @@ export default {
     padding: 0 3px;
   }
   .if-error {
-    color: $input-error-color;
+    color: $error;
 
   }
 }

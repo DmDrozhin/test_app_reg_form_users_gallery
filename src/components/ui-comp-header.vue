@@ -40,7 +40,6 @@ export default {
   .block {
   &__header, 
   .header {
-    flex: 0 1 auto; // don't take
     @include header-height;
     background-image: $bg-main-image;
     background-color: $bg-dimmer;
@@ -60,19 +59,17 @@ export default {
     @include media('min', 'lg') { background-position-y: 85%; }
     &__container{
       height: 100%;
-      @include container-paddings;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      // border: 2px dotted rgb(105, 113, 255);
+      // border: 2px dotted rgb(235, 255, 105);
+      @include media('min', 'sm') { padding-top: 40px; }
+      @include media('min', 'md') { padding-top: 89px; }
+      @include media('min', 'lg') { padding-top: 164px; }
+      @include media('min', 'xl') { padding-top: 164px; }
     }
     &__wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      margin: 0 auto;
       max-width: 380px;
+      @include media('min', 'sm') { width: 328px; }
+      @include media('min', 'md') { width: 380px; }
       text-align: center;
       color: #fff;
       // border: 2px dotted hotpink;
@@ -91,9 +88,9 @@ export default {
       color: inherit;
       margin-bottom: 32px;
     }
-    // &__button {
-
-    // }
+    &__button {
+      margin: 0 auto;
+    }
   }
 
 }

@@ -23,8 +23,7 @@ $sizes: ("sm":360px, "md":768px, "lg":1024px, "xl":2560px);
 }
 // Main container
 
-@mixin container-width {
-  @include gide-lines;
+@mixin general-width {
   // @media screen and (min-width: 360px) { width: 360px; };
   // @media screen and (min-width: 768px) { width: 768px; };
   // @media screen and (min-width: 1024px) { width: 1024px; };
@@ -34,8 +33,15 @@ $sizes: ("sm":360px, "md":768px, "lg":1024px, "xl":2560px);
   @include media('min', 'lg') { width: 1024px; }
   @include media('min', 'xl') { width: 1170px; }
 }
+@mixin container-width {
+  // @include gide-lines;
+  @include media('min', 'sm') { width: 328px; }
+  @include media('min', 'md') { width: 704px; }
+  @include media('min', 'lg') { width: 904px; }
+  @include media('min', 'xl') { width: 1170px; }
+}
 
-@mixin container-paddings {
+@mixin general-paddings {
   @include media('min', 'sm') { padding: 0 16px; }
   @include media('min', 'md') { padding: 0 32px; }
   @include media('min', 'lg') { padding: 0 56px 0 60px; }

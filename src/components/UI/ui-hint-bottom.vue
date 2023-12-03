@@ -45,7 +45,7 @@ export default {
   }
   &__txt {
     @include body12;
-    padding-left: $input-left-pd-err;
+    padding-left: 18px;
     color: v-bind(color);
   }
 }

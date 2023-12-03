@@ -1,6 +1,10 @@
 <template>
   <div class="app">
-    <ui-comp-nav-menu class="app__ui-nav"></ui-comp-nav-menu>
+    <div class="app__nav nav">
+      <div class="nav__container">
+        <ui-comp-nav-menu class="nav__ui-nav"></ui-comp-nav-menu>
+      </div>
+    </div>
     <div class="app__container">
       <router-view />
     </div>
@@ -19,11 +23,20 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/main.scss';
   .app {
+    &__nav, 
+    .nav {
+      &__container {
+        margin: 0 auto;
+        @include container-width;
+      }
+      // &__ui-nav {
+
+      // }
+    }
     &__container {
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      // @include container-width;
+      @include general-width;
+      margin: 0 auto;
     }
     // &__ui-nav { }
     // &__router-screen { }

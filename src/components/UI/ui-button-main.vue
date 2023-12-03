@@ -1,16 +1,10 @@
 <template>
-  <div 
+  <button 
     class="ui-button-main button"
-    :class="{ 'disabled-base': isDisabled }"
-    @click="handleClick()"
-  >
-    <p 
-      class="button__title"
-      :class="{ 'disabled-txt': isDisabled }"
-    >
-      {{ title }}
-    </p>
-  </div>
+    type="button"
+    @click="handleClick()">
+    {{ title }}
+  </button>
 </template>
 
 <script>
@@ -24,11 +18,12 @@ export default {
     return {}
   },
   props: {
-    isDisabled: { type: Boolean, default: false },
+    isDisabled: { type: Boolean, default: true },
     title: { type: String||Number, default: 'button title' }
   },
   methods: {
-    handleClick() { this.$emit('buttonClick') }
+    // handleClick() { this.$emit('buttonClick') }
+    handleClick() { console.log('Main button Click') }
   }
 }
 
@@ -38,31 +33,31 @@ export default {
 @import '@/styles/main.scss';
 .ui-button-main, 
 .button {
-  width: fit-content;
-  padding: $main-button-padding;
-  background-color: $main-button-still-bg-color;
-  border-radius: $main-button-radius;
+  border: none;
+  height: 34px;
+  width: 100px;
+  padding: $btn-pd;
+  background-color: $primary;
+  border-radius: $btn-rd;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: default;
   &:hover {
-    background-color: $main-button-hover-bg-color;
+    background-color: $btn-hover;
   }
   &__title {
     @include body16;
+    color: $black87;
     text-transform: capitalize;
   }
   &__title:hover {
-    color: $main-button-hover-text-color;
+    color: $black87;
   }
-}
-.disabled-base {
-  background-color: $main-button-disabled-bg-color;
-  pointer-events: none;
-}
-.disabled-txt {
-  @include body12;
-  color: $input-error-color;
+  &:disabled {
+    background-color: $btn-disabled;
+    color: $white87;
+    pointer-events: none;
+  }
 }
 </style>

@@ -53,8 +53,6 @@ export default {
   height: 60px;
   &__container {
     height: inherit;
-    @include container-width;
-    @include container-paddings;
     margin: auto;
   }
   &__wrapper {

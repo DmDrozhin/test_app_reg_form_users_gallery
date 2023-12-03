@@ -1,7 +1,14 @@
 <template>
   <div class="ui-comp-upload-block block">
     <!-- temp -->
-    <div class="block__test-btn"><button @click="toggleError">Toggle</button></div>
+    <div class="block__test-btn" @click="toggleError">
+      <ui-arrow-filled-icon
+        :direction="'rotate(180)'"
+        :size="25"
+        :color="'#FFE302'"
+        :viewBox="'0 -5 24 24'"
+      ></ui-arrow-filled-icon>
+    </div>
     <!-- temp -->
 
     <div class="block__wrapper">
@@ -53,11 +60,21 @@ export default {
 .ui-comp-upload-block, 
 .block {
   position: relative;
-  &__test-btn {
+
+  &__test-btn { // temp
     position: absolute;
-    top: 0px;
-    left: -100px;
+    top: -20px;
+    right: 0px;
+    // @include media('min', 'sm') { width: 245px; }
+    // @include media('min', 'md') { width: 297px; }
+    &:before {
+      content: 'test';
+      position: absolute;
+      left: -25px;
+      top: -5px;
+    }
   }
+
   &__wrapper {
     width: 100%;
     display: flex;

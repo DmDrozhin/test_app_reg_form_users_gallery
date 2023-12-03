@@ -5,6 +5,8 @@ import uiCustomInput from '@/components/UI/ui-custom-input.vue'
 import uiCustomInputButton from '@/components/UI/ui-custom-input-button.vue'
 import uiCustomInputTxtArea from '@/components/UI/ui-custom-input-txt-area.vue'
 
+import uiArrIcon from '@/components/UI/temp/ui-arrow-filled-icon.vue' // TEMP
+
 
 export default [
   uiButtonMain,
@@ -13,4 +15,5 @@ export default [
   uiCustomInput,
   uiCustomInputButton,
   uiCustomInputTxtArea,
+  uiArrIcon, // TEMP
 ]

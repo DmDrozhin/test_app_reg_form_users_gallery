@@ -9,24 +9,20 @@
   margin: 0;
   box-sizing: border-box;
 }
-$site-height: 100vh;
-$site-width: 100%;
+
 html {
-  height: $site-height;
+  height: 100hv;
   height: -webkit-fill-available;
   width: 100%;
-
 }
+
 body {
   height: 100%;
-  /* mobile viewport bug fix */
+  // mobile viewport bug fix */
   min-height: -webkit-fill-available;
-  max-width: $site-width;
-  // margin: 0 auto;
 }
-
 // RESETS
-// input, select, textarea {
+//input, select, textarea {
 //   border: none;
 //   outline: none;
 //   border-style: none;
@@ -38,5 +34,4 @@ body {
 //   resize: none; /*remove the resize handle on the bottom right*/
 //   padding: 0;
 //   margin: 0;
-//}
-
+// {

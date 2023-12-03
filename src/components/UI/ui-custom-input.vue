@@ -1,6 +1,13 @@
 <template>
   <div class="ui-custom-input input">
-    <div class="input__test-btn"><button @click="toggle">Toggle</button></div>
+    <div class="input__test-btn" @click="toggle">
+      <ui-arrow-filled-icon
+        :direction="'rotate(180)'"
+        :size="25"
+        :color="currColor"
+        :viewBox="'0 -5 24 24'"
+      ></ui-arrow-filled-icon>
+    </div>
 
     <div class="input__container">
 
@@ -104,8 +111,14 @@ export default {
 
   &__test-btn { // temp
     position: absolute;
-    top: 0px;
-    left: -100px;
+    top: -20px;
+    right: 0px;
+    &:before {
+      content: 'test';
+      position: absolute;
+      left: -25px;
+      top: -5px;
+    }
   }
 
   // &__container { }
@@ -117,6 +130,8 @@ export default {
     height: 54px;
     padding: $input-paddings;
     border-radius: $input-brd-radius;
+    @include media('min', 'sm') { width: 328px; }
+    @include media('min', 'md') { width: 380px; }
 
     @include body16;
     // color: $grey;

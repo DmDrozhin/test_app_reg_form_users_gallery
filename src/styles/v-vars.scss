@@ -6,7 +6,7 @@ $bg-dimmer: #00000080;
 // COLORS
 // Primary color
 // Component <BG=”yellow”>
-$primary-color: #F4E041;
+$primary: #F4E041;
 // Secondary color
 // Component <BG=”blue”>
 $secondary-color: #00BDD3;
@@ -25,25 +25,19 @@ $error: #CB3D40;
 
 // MAIN BUTTON styles
 // Normal
-$main-button-padding: 4px 23px;
-$main-button-radius: 16px;
-$main-button-still-bg-color: $primary-color;
+$btn-pd: 4px 23px;
+$btn-rd: 16px;
 // Hover
-$main-button-hover-bg-color: #FFE302;
-$main-button-hover-text-color: $black87;
+$btn-hover: #FFE302;
 // Disabled
-$main-button-disabled-bg-color: #B4B4B4;
+$btn-disabled: #B4B4B4;
 $main-button-disabled-text-color: $white87;
 
-// ALL FIELDS styles
-$input-block-width: 328px;
+// Inputs style
 $input-brd-radius: 4px;
 $input-brd-color: #D0CFCF;
-$input-still-txt-color: #7E7E7E;
-$input-error-color: #CB3D40;
+$grey7E: #7E7E7E; // placeholder
 $input-paddings: 14px 14px 14px 16px;
-$input-left-pd-err: 15px;
-//Component:  <Textarea type =”normal”>
 
 // FONTS
 // Component <Heading=«h1»> «normal»> 

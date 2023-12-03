@@ -100,6 +100,8 @@ export default {
     box-sizing: border-box;
     width: 297px;
     height: 54px;
+    @include media('min', 'sm') { width: 245px; }
+    @include media('min', 'md') { width: 297px; }
     display:block;
     resize: none;
     overflow: hidden;

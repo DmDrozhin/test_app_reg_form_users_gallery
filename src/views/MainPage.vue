@@ -6,12 +6,7 @@
 
       <main class="page__main main">
         <div class="main__container">
-          <div class="inputs__upload upload">
 
-            <br><hr><br>
-            <br><hr><br>
-
-          </div>
         </div>
       </main>
 
@@ -89,30 +84,30 @@ export default {
 .page {
   &__container {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // align-items: center;
 
-    @include container-width;
     // @include tech-mark;
   }
-
-
   &__main, 
   .main {
     flex: 1;
     min-height: 500px;
+    background-color: $bg-color1;
+
 
     &__container {
+      @include container-width;
+      margin: 0 auto;
       min-height: inherit;
-      @include container-paddings;
-      background-color: $bg-color1;
+      background-color: rgb(238, 226, 197)    
     }
   }
   &__footer, 
   .footer{
-    @include container-paddings;
-    // @include container;
+    background-color: $bg-color1;
     // &__post-wrapper, 
     // .posts {
     //   &__inputs-wrapper, 
@@ -124,7 +119,10 @@ export default {
     //     }
     //   }
     // }
-    &__container {}
+    &__container {
+      @include container-width;
+      margin: 0 auto;
+    }
     &__post-form,
     .form {
       &__wrapper {
@@ -138,8 +136,11 @@ export default {
       &__container {
 
         // @include gide-lines;
-        width: 380px;
-        margin: auto;
+        // width: 380px;
+        margin: 0 auto;
+        @include media('min', 'sm') { width: 328px; }
+        @include media('min', 'md') { width: 380px; }
+        // margin: auto;
       }
       &__inputs-block, 
       .ui-inp {

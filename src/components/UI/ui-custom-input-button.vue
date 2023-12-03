@@ -56,7 +56,7 @@ export default {
       } else {
         return {
           'border-width': '1px',
-          'border-color': this.COLORS.norm,
+          'border-color': this.COLORS.black87,
           // transform: 'translateY(1px)'
         }
       }
