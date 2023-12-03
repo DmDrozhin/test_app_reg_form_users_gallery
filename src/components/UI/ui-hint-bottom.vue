@@ -1,7 +1,7 @@
 <template>
-  <div class="ui-bottom-hint hint">
+  <div class="ui-hint-bottom hint">
     <div class="hint__wrapper">
-      <span class="hint__txt" :class="{ 'if-error': isError }">
+      <span class="hint__txt">
         {{ hint }}
       </span>
     </div>
@@ -12,40 +12,41 @@
 // API
 // :isError="false"
 // :hint="'error txt'"
+// :color="'#7E7E7E'"
 export default {
-  name: 'ui-bottom-hint',
+  name: 'ui-hint-bottom',
   data() {
     return {}
   },
   props: {
     // isDisabled: { type: Boolean, default: false },
     isError: { type: Boolean, default: false },
-    hint: { type: String||Number, default: 'error text' }
+    hint: { type: String||Number, default: 'error text' },
+    color: { type: String, default: '#7E7E7E' }
   },
 }
 
 </script>
 <style lang="scss" scoped>
 @import '@/styles/main.scss';
-.ui-bottom-hint, 
+.ui-hint-bottom, 
 .hint {
   max-width: inherit;
   &__wrapper {
     position: absolute;
     width: 100%;
-    border: 1px dotted rgb(0, 42, 255);
+    // border: 1px dotted rgb(0, 42, 255);
     bottom: -20px;
     left: 0;
-    text-align: center;
+    text-align: left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   &__txt {
     @include body12;
-  }
-  .if-error {
-    color: $input-error-color;
+    padding-left: $input-left-pd-err;
+    color: v-bind(color);
   }
 }
 </style>

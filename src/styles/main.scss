@@ -1,5 +1,6 @@
 @import './v-vars.scss';
 @import './v-fonts.scss';
+@import './v-layout.scss';
 
 * {
   font-family: 'Nunito-Regular', sans-serif;
@@ -24,18 +25,18 @@ body {
   // margin: 0 auto;
 }
 
-RESETS
+// RESETS
 input, select, textarea {
-  border: none;
-  outline: none;
-  border-style: none;
-  border-color: transparent;
-  overflow: hidden;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  resize: none; /*remove the resize handle on the bottom right*/
-  padding: 0;
-  margin: 0;
+//   border: none;
+//   outline: none;
+//   border-style: none;
+//   border-color: transparent;
+//   overflow: hidden;
+//   -webkit-box-shadow: none;
+//   -moz-box-shadow: none;
+//   box-shadow: none;
+//   resize: none; /*remove the resize handle on the bottom right*/
+//   padding: 0;
+//   margin: 0;
 }
 

@@ -45,6 +45,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: default;
   &:hover {
     background-color: $main-button-hover-bg-color;
   }

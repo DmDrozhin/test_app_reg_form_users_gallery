@@ -1,53 +1,3 @@
-// GENERAL ADAPTATION MODE
-$sizes: ("sm":360px, "md":768px, "lg":1024px, "xl":2560px);
-
-@mixin media($min-max, $media) {
-  @each $size, $resolution in $sizes {
-    @if $media == $size {
-      @media only screen and (#{$min-max}-width: $resolution) {
-        @content;
-      }
-    }
-  }
-}
-// SCREEN SIZE & PADDINGS
-@mixin gide-lines {
-  border-left: 1px dotted grey;
-  border-right: 1px dotted grey;
-}
-@mixin tech-mark {
-  @include media('min', 'sm') { background-color: #deca98; }
-  @include media('min', 'md') { background-color: #bf98de; }
-  @include media('min', 'lg') { background-color: #98dece; }
-  @include media('min', 'xl') { background-color: #de9898; }
-}
-// Main container
-
-@mixin container-width {
-  // @media screen and (min-width: 360px) { width: 360px; };
-  // @media screen and (min-width: 768px) { width: 768px; };
-  // @media screen and (min-width: 1024px) { width: 1024px; };
-  // @media screen and (min-width: 2560px) { width: 1170px; };
-  @include media('min', 'sm') { width: 360px; }
-  @include media('min', 'md') { width: 768px; }
-  @include media('min', 'lg') { width: 1024px; }
-  @include media('min', 'xl') { width: 1170px; }
-}
-
-@mixin container-paddings {
-  @include media('min', 'sm') { padding: 0 16px; }
-  @include media('min', 'md') { padding: 0 32px; }
-  @include media('min', 'lg') { padding: 0 56px 0 60px; }
-  @include media('min', 'xl') { padding: 0; }
-}
-
-@mixin header-height {
-  @include media('min', 'sm') { height: 500px }
-  @include media('min', 'md') { height: 500px }
-  @include media('min', 'lg') { height: 650px; }
-  @include media('min', 'xl') { height: 650px; }
-}
-
 //BACKGROUND IMAGE
 $bg-main-image: url('../assets/images/pexels-alexandr-podvalny-1227513.jpeg');
 $bg-main-icon: url('../assets/images/Logo.svg');
@@ -62,15 +12,17 @@ $primary-color: #F4E041;
 $secondary-color: #00BDD3;
 // Background color
 // Component <BG=”light-gray”> 
-$bg-color: #F8F8F8;
-// The very top strip h60px
-$strip-color: #161616;
+// Site background color
+$bg-color1: #F8F8F8;
+$bg-color2: #FFF;
 
+// TEXT styles
+// Buttons text color
+$black87: #000000de;
+$white87: #ffffffde;
+$error: #CB3D40;
 
 // MAIN BUTTON styles
-// Buttons text color
-$black87: rgba(0, 0, 0, 0.87);
-$white87: rgba(255, 255, 255, 0.87);
 // Normal
 $main-button-padding: 4px 23px;
 $main-button-radius: 16px;
@@ -84,33 +36,13 @@ $main-button-disabled-text-color: $white87;
 
 // ALL FIELDS styles
 $input-block-width: 328px;
-$input-brd-radius: 3px;
+$input-brd-radius: 4px;
 $input-brd-color: #D0CFCF;
 $input-still-txt-color: #7E7E7E;
 $input-error-color: #CB3D40;
 $input-paddings: 14px 14px 14px 16px;
+$input-left-pd-err: 15px;
 //Component:  <Textarea type =”normal”>
-
-// UPLOAD button
-// Enabled state
-$upload-button-border-enabled: 1px solid $black87;
-$upload-button-padding: 14px 14px 14px 16px;
-// Enabled - filled state - the same
-// Error state
-$upload-button-border-error: 2px solid $input-error-color;
-
-// TEXT AREA field
-// Enabled state
-$txt-area-still-border: 1px solid $input-brd-color;
-$txt-area-txt-still-color: $input-still-txt-color;
-// Enabled - filled state
-$txt-area-txt-active-color: $black87;
-// Error state
-$txt-area-error-border: 1px solid $input-error-color;
-
-
-
-
 
 // FONTS
 // Component <Heading=«h1»> «normal»> 

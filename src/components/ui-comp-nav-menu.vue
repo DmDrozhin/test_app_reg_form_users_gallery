@@ -1,23 +1,24 @@
 <template>
   <div class="ui-comp-nav-menu menu">
-    <div class="menu__wrapper">
-      <div class="menu__img"></div>
-      <div class="menu__nav nav">
-        <ui-button-main
-          class="menu__ui-button"
-          :isDisabled="isDisabled"
-          :title="button1"
-          @buttonClick="handleClick(1)"
-        ></ui-button-main>
-        <ui-button-main
-          class="menu__ui-button"
-          :isDisabled="isDisabled"
-          :title="button2"
-          @buttonClick="handleClick(2)"
-        ></ui-button-main>
+    <div class="menu__container">
+      <div class="menu__wrapper">
+        <div class="menu__img"></div>
+        <div class="menu__nav nav">
+          <ui-button-main
+            class="menu__ui-button"
+            :isDisabled="isDisabled"
+            :title="button1"
+            @buttonClick="handleClick(1)"
+          ></ui-button-main>
+          <ui-button-main
+            class="menu__ui-button"
+            :isDisabled="isDisabled"
+            :title="button2"
+            @buttonClick="handleClick(2)"
+          ></ui-button-main>
+        </div>
       </div>
     </div>
-
   </div>
   
 </template>
@@ -48,7 +49,14 @@ export default {
 @import '@/styles/main.scss';
 .ui-comp-nav-menu, 
 .menu {
+  background-color: $bg-color2;
   height: 60px;
+  &__container {
+    height: inherit;
+    @include container-width;
+    @include container-paddings;
+    margin: auto;
+  }
   &__wrapper {
     height: inherit;
     display: flex;
@@ -66,7 +74,7 @@ export default {
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    &__ui-button {}
+    // &__ui-button {}
   }
 }
 </style>

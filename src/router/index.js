@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MainPage from '../views/MainPage.vue'
+import MainPage from '@/views/MainPage.vue'
 
 const routes = [
   {
@@ -18,8 +18,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  // history: createWebHistory(process.env.BASE_URL),
-  history: createWebHistory(process.env.NODE_ENV === 'production' ? process.env.GP_BASE_URL : process.env.BASE_URL),
+  history: createWebHistory(process.env.BASE_URL),
+  // history: createWebHistory(process.env.NODE_ENV === 'production' ? process.env.GP_BASE_URL : process.env.BASE_URL),
   routes
 })
 

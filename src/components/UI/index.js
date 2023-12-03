@@ -1,13 +1,16 @@
 import uiButtonMain from '@/components/UI/ui-button-main.vue'
-import uiButtonInput from '@/components/UI/ui-button-input.vue'
-import uiBottomHint from '@/components/UI/ui-bottom-hint.vue'
-import uiCustomInput from '@/components/UI/ui-custom-input.vue'
-import uiInputTextarea from '@/components/UI/ui-input-textarea.vue'
+import uiHintBottom from '@/components/UI/ui-hint-bottom.vue'
+import uiHintTop from '@/components/UI/ui-hint-top.vue'
+import uiCustomInput2 from '@/components/UI/ui-custom-input-2.vue'
+import uiCustomInputButton from '@/components/UI/ui-custom-input-button.vue'
+import uiCustomInputTxtArea from '@/components/UI/ui-custom-input-txt-area.vue'
+
 
 export default [
   uiButtonMain,
-  uiButtonInput,
-  uiBottomHint,
-  uiCustomInput,
-  uiInputTextarea
+  uiHintBottom,
+  uiHintTop,
+  uiCustomInput2,
+  uiCustomInputButton,
+  uiCustomInputTxtArea,
 ]
