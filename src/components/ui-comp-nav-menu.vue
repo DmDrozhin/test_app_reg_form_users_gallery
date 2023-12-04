@@ -30,8 +30,8 @@ export default {
   name: 'ui-comp-nav-menu',
   data() {
     return{
-      btnNav1Name: 'Users',
-      btnNav2Name: 'Sing Up',
+      btnNav1Name: 'users',
+      btnNav2Name: 'sign up',
       isDisabled: false,
     }
   },

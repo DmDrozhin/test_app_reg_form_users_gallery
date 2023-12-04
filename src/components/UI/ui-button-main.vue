@@ -5,7 +5,8 @@
     :name="title"
     @click="handleClick()"
   >
-    <slot></slot>
+    <!-- <slot></slot> -->
+    <p class="button__title">{{ title }}</p>
   </button>
 </template>
 
@@ -51,7 +52,8 @@ export default {
   &__title {
     @include body16;
     color: $black87;
-    text-transform: capitalize;
+    white-space: nowrap;
+    @include capitalize;    
   }
   &__title:hover {
     color: $black87;

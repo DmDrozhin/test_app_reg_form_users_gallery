@@ -25,7 +25,8 @@ export default {
     return{
       title: 'test assignment for front-end developer',
       titleAdds: 'What defines a good front-end developer is one that has skilled knowledge of HTML, CSS, JS with a vast understanding of User design thinking as they\'ll be building web interfaces with accessibility in mind. They should also be excited to learn, as the world of Front-End Development keeps evolving.',
-      btnTopName: 'Sing up',
+
+      btnTopName: 'sign up',
       isDisabled: false,
     }
   },
@@ -45,20 +46,29 @@ export default {
     @include header-height;
     background-image: $bg-main-image;
     background-color: $bg-dimmer;
-    background-blend-mode: multiply;
+    // background-blend-mode: multiply;
     background-position-x: center;
     background-position-y: 85%;
     background-size: 210%;
     background-repeat: no-repeat;
     @include media('min', 'sm') { 
-      background-position-y: -380px;
-      background-size: 390%;
+      background-position: -448px -316px;
+      background-size: 343% 164%;
     }
     @include media('min', 'md') { 
-      background-position-y: 86%; 
-      background-size: 210%;
+      background-position: -954px -316px;
+      background-size: 343% 164%;
     }
-    @include media('min', 'lg') { background-position-y: 85%; }
+    @include media('min', 'lg') { 
+      background-position: -1272px -412px;
+      background-size: 343% 164%;
+
+    }
+    @include media('min', 'xl') { 
+      background-position: 50% 80%;
+      background-size: 219% 262%;
+
+    }
     &__container{
       height: 100%;
       @include header-top-pds;

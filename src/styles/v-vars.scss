@@ -60,3 +60,10 @@ $input-paddings: 14px 14px 14px 16px;
   color: $bg-color2;
   z-index: 1;
 }
+
+@mixin capitalize {
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+// @include capitalize;
