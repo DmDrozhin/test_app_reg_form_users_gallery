@@ -19,29 +19,36 @@
           @mouseover="handleHover" 
           @mouseleave="handleHover"
         >
-          {{ userCard.name }}
+          <!-- {{ userCard.name }}
           <span 
             v-if="toolTip.isHover && toolTip.el === 'name'"
             :class="{ 'tooltip': toolTip }"
             :style="tipPosition"
           >
             {{ userCard.name }}
-          </span>
+          </span> -->
         </p>
-
-
-
-
-
         <div class="user__mid-wrapper">
           <p class="user__job rel" id="job">
             {{ userCard.job }}
             <!-- <span class="user__job-tooltip tooltip">{{ userCard.job }}</span> -->
           </p>
-          <p class="user__email rel" id="email">
+          <p 
+            class="user__email rel" 
+            id="email"
+            @mouseover="handleHover" 
+            @mouseleave="handleHover"
+          >
             {{ userCard.email }}
-          <!-- <span class="user__email-tooltip tooltip">{{ userCard.email }}</span> -->
+            <span 
+              v-if="toolTip.isHover && toolTip.el === 'email'"
+              :class="{ 'tooltip': toolTip }"
+              :style="tipPosition"
+            >
+              {{ userCard.email }}
+            </span>
           </p>
+
           <p class="user__phone rel" id="phone">
             {{ userCard.phone }}
             <!-- <span class="user__phone-tooltip tooltip">{{ userCard.phone }}</span> -->
@@ -65,16 +72,14 @@ export default {
   data() {
     return{
       cont: 'some content',
-      toolTip: { isHover: false, el: '', x: 0, y: 0 }
+      toolTip: { isHover: false, el: '', x: 0 }
       
     }
   },
   computed: { 
     tipPosition () { return {
         left: `${this.toolTip.x - 20}px`,
-        bottom: `${this.toolTip.y -90}px`
         // transform: `translateX(${this.toolTip.x}px)`,
-        // transform: `translateY(${this.toolTip.y}px)`
       }
     }
   },
@@ -84,14 +89,11 @@ export default {
       if (e.target.id === '') return
       else {
         if (e.type === 'mouseover') {
-          // console.log('over ', e.target.id)
           this.toolTip.isHover = true
           this.toolTip.el = e.target.id
           this.toolTip.x = e.offsetX
-          this.toolTip.y = e.offsetY
         }
         if (e.type === 'mouseleave') {
-          // console.log('leave ', e.target.id)
           this.toolTip = {}
         }
       }
@@ -157,13 +159,13 @@ export default {
 .tooltip {
   position: absolute;
   bottom: -45px;
-  left: 40%;
   border-radius: $input-brd-radius;
   @include body16;
   padding: 3px 16px;
   background-color: $black87;
   color: $bg-color2;
   z-index: 1;
+  white-space: nowrap;
 }
 
 </style>
