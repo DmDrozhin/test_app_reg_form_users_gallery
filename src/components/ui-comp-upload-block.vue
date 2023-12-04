@@ -78,12 +78,12 @@ export default {
   &__wrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    // &__button {}
-    &__textarea {
-      flex: 1;
-    }
+    justify-content: space-between;
+    // &__button { }
+  }
+  &__textarea {
+    flex: 1;
   }
 
 

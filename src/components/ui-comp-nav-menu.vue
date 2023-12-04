@@ -7,15 +7,15 @@
           <ui-button-main
             class="menu__ui-button"
             :isDisabled="isDisabled"
-            :title="button1"
+            :title="btnNav1Name"
             @buttonClick="handleClick(1)"
-          ></ui-button-main>
+          >{{ btnNav1Name }}</ui-button-main>
           <ui-button-main
             class="menu__ui-button"
             :isDisabled="isDisabled"
-            :title="button2"
+            :title="btnNav2Name"
             @buttonClick="handleClick(2)"
-          ></ui-button-main>
+          >{{ btnNav2Name }}</ui-button-main>
         </div>
       </div>
     </div>
@@ -30,8 +30,8 @@ export default {
   name: 'ui-comp-nav-menu',
   data() {
     return{
-      button1: 'Users',
-      button2: 'Sing Up',
+      btnNav1Name: 'Users',
+      btnNav2Name: 'Sing Up',
       isDisabled: false,
     }
   },

@@ -1,42 +1,15 @@
-//BACKGROUND IMAGE
+// Background
 $bg-main-image: url('../assets/images/pexels-alexandr-podvalny-1227513.jpeg');
 $bg-main-icon: url('../assets/images/Logo.svg');
 $bg-dimmer: #00000080;
 
-// COLORS
-// Primary color
-// Component <BG=”yellow”>
-$primary: #F4E041;
-// Secondary color
-// Component <BG=”blue”>
-$secondary-color: #00BDD3;
-// Background color
-// Component <BG=”light-gray”> 
-// Site background color
-$bg-color1: #F8F8F8;
-$bg-color2: #FFF;
-
-// TEXT styles
-// Buttons text color
-$black87: #000000de;
-$white87: #ffffffde;
-$grey7E: #7E7E7E;
-$error: #CB3D40;
-
-// MAIN BUTTON styles
+// Main button
 // Normal
 $btn-pd: 4px 23px;
 $btn-rd: 16px;
-// Hover
-$btn-hover: #FFE302;
-// Disabled
-$btn-disabled: #B4B4B4;
-$main-button-disabled-text-color: $white87;
 
 // Inputs style
 $input-brd-radius: 4px;
-$input-brd-color: #D0CFCF;
-$grey7E: #7E7E7E; // placeholder
 $input-paddings: 14px 14px 14px 16px;
 
 // FONTS
@@ -65,4 +38,25 @@ $input-paddings: 14px 14px 14px 16px;
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
+}
+
+@mixin txt-ellipsis { // brakes absolute position
+  display: block;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+@mixin tooltip {
+  position: absolute;
+  bottom: -45px;
+  left: 40%;
+  border-radius: $input-brd-radius;
+  @include body16;
+  padding: 3px 16px;
+  background-color: $black87;
+  color: $bg-color2;
+  z-index: 1;
 }

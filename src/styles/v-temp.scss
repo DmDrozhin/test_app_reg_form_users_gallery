@@ -1,0 +1,30 @@
+// // GENERAL ADAPTATION MODE
+// $sizes: ("sm":360px, "md":768px, "lg":1024px, "xl":2560px);
+
+// @mixin media($min-max, $media) {
+//   @each $size, $resolution in $sizes {
+//     @if $media == $size {
+//       @media only screen and (#{$min-max}-width: $resolution) {
+//         @content;
+//       }
+//     }
+//   }
+// }
+// // SCREEN SIZE & PADDINGS
+// @mixin gide-lines {
+//   border-left: 1px dotted grey;
+//   border-right: 1px dotted grey;
+// }
+// @mixin tech-mark {
+//   @include media('min', 'sm') { background-color: #deca98; }
+//   @include media('min', 'md') { background-color: #bf98de; }
+//   @include media('min', 'lg') { background-color: #98dece; }
+//   @include media('min', 'xl') { background-color: #de9898; }
+// }
+
+// @mixin general-paddings {
+//   @include media('min', 'sm') { padding: 0 16px; }
+//   @include media('min', 'md') { padding: 0 32px; }
+//   @include media('min', 'lg') { padding: 0 56px 0 60px; }
+//   @include media('min', 'xl') { padding: 0; }
+// }

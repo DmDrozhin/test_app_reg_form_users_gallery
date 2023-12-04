@@ -25,6 +25,8 @@ export default {
   .app {
     &__nav, 
     .nav {
+      width: 100%;
+      background-color: $bg-color2;
       &__container {
         margin: 0 auto;
         @include container-width;

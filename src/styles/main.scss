@@ -1,6 +1,9 @@
 @import './v-vars.scss';
 @import './v-fonts.scss';
 @import './v-layout.scss';
+@import './v-colors.scss';
+@import './v-temp.scss';
+
 
 * {
   font-family: 'Nunito-Regular', sans-serif;
@@ -20,6 +23,7 @@ body {
   height: 100%;
   // mobile viewport bug fix */
   min-height: -webkit-fill-available;
+  background-color: $bg-color1;
 }
 // RESETS
 //input, select, textarea {

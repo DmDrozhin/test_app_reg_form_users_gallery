@@ -126,12 +126,11 @@ export default {
   
   // ORIGINAL INP
   &__input {
-    width: 380px;
+    width: 100%;
     height: 54px;
     padding: $input-paddings;
     border-radius: $input-brd-radius;
-    @include media('min', 'sm') { width: 328px; }
-    @include media('min', 'md') { width: 380px; }
+    background-color: transparent;
 
     @include body16;
     // color: $grey;

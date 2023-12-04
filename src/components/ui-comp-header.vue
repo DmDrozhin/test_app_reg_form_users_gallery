@@ -8,9 +8,9 @@
             <ui-button-main
               class="header__button"
               :isDisabled="isDisabled"
-              :title="button1"
+              :title="btnTopName"
               @buttonClick="handleClick()"
-            ></ui-button-main>
+            >{{ btnTopName }}</ui-button-main>
           </div>
         </div>
       </header>
@@ -25,11 +25,13 @@ export default {
     return{
       title: 'test assignment for front-end developer',
       titleAdds: 'What defines a good front-end developer is one that has skilled knowledge of HTML, CSS, JS with a vast understanding of User design thinking as they\'ll be building web interfaces with accessibility in mind. They should also be excited to learn, as the world of Front-End Development keeps evolving.',
-      button1: 'Sing up',
+      btnTopName: 'Sing up',
       isDisabled: false,
     }
   },
-  methods: { },
+  methods: {  
+    handleClick() { console.log('header button clicked') }
+  },
   computed: { }
 }
 </script>
@@ -59,11 +61,7 @@ export default {
     @include media('min', 'lg') { background-position-y: 85%; }
     &__container{
       height: 100%;
-      // border: 2px dotted rgb(235, 255, 105);
-      @include media('min', 'sm') { padding-top: 40px; }
-      @include media('min', 'md') { padding-top: 89px; }
-      @include media('min', 'lg') { padding-top: 164px; }
-      @include media('min', 'xl') { padding-top: 164px; }
+      @include header-top-pds;
     }
     &__wrapper {
       margin: 0 auto;

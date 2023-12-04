@@ -2,8 +2,10 @@
   <button 
     class="ui-button-main button"
     type="button"
-    @click="handleClick()">
-    {{ title }}
+    :name="title"
+    @click="handleClick()"
+  >
+    <slot></slot>
   </button>
 </template>
 

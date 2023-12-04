@@ -11,23 +11,7 @@ $sizes: ("sm":360px, "md":768px, "lg":1024px, "xl":2560px);
   }
 }
 // SCREEN SIZE & PADDINGS
-@mixin gide-lines {
-  border-left: 1px dotted grey;
-  border-right: 1px dotted grey;
-}
-@mixin tech-mark {
-  @include media('min', 'sm') { background-color: #deca98; }
-  @include media('min', 'md') { background-color: #bf98de; }
-  @include media('min', 'lg') { background-color: #98dece; }
-  @include media('min', 'xl') { background-color: #de9898; }
-}
-// Main container
-
 @mixin general-width {
-  // @media screen and (min-width: 360px) { width: 360px; };
-  // @media screen and (min-width: 768px) { width: 768px; };
-  // @media screen and (min-width: 1024px) { width: 1024px; };
-  // @media screen and (min-width: 2560px) { width: 1170px; };
   @include media('min', 'sm') { width: 360px; }
   @include media('min', 'md') { width: 768px; }
   @include media('min', 'lg') { width: 1024px; }
@@ -40,17 +24,35 @@ $sizes: ("sm":360px, "md":768px, "lg":1024px, "xl":2560px);
   @include media('min', 'lg') { width: 904px; }
   @include media('min', 'xl') { width: 1170px; }
 }
-
-@mixin general-paddings {
-  @include media('min', 'sm') { padding: 0 16px; }
-  @include media('min', 'md') { padding: 0 32px; }
-  @include media('min', 'lg') { padding: 0 56px 0 60px; }
-  @include media('min', 'xl') { padding: 0; }
-}
-
+// HEADER
 @mixin header-height {
   @include media('min', 'sm') { height: 500px }
   @include media('min', 'md') { height: 500px }
   @include media('min', 'lg') { height: 650px; }
   @include media('min', 'xl') { height: 650px; }
 }
+@mixin header-top-pds {
+  @include media('min', 'sm') { padding-top: 40px; }
+  @include media('min', 'md') { padding-top: 89px; }
+  @include media('min', 'lg') { padding-top: 164px; }
+  @include media('min', 'xl') { padding-top: 164px; }
+}
+@mixin main-gallery {
+  @include media('min', 'sm') { 
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+  @include media('min', 'md') { 
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+  }
+  @include media('min', 'lg') { 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 29px;
+  }
+  @include media('min', 'xl') { 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 29px;
+  }
+}
+

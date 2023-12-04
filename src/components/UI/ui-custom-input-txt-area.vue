@@ -92,18 +92,19 @@ export default {
 
 .ui-custom-input-txt-area,
 .input {
+  width: 100%;
   &__container {
+    width: inherit;
     position: relative;
   }
   // ORIGINAL INP
   &__input {
     box-sizing: border-box;
-    width: 297px;
+    width: inherit;
     height: 54px;
-    @include media('min', 'sm') { width: 245px; }
-    @include media('min', 'md') { width: 297px; }
     display:block;
     resize: none;
+    background-color: transparent;
     overflow: hidden;
     border-radius: 0 $input-brd-radius $input-brd-radius 0;
     // border-left: none;

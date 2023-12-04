@@ -49,7 +49,7 @@ export default {
   &__txt {
     @include body12;
     color: v-bind(color);
-    background-color: #fff;
+    background-color: $bg-color1;
     padding: 0 3px;
   }
   .if-error {
