@@ -37,7 +37,7 @@ export default {
 
 
   .radio {
-    margin-bottom: 4px;
+    margin-bottom: 7px;
     &:last-child {
       margin-bottom: 0px;
     }

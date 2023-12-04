@@ -2,46 +2,51 @@
   <footer class="ui-comp-footer footer">
     <div class="footer__container">
         <ui-loader class="footer__loader"></ui-loader>
-        <div class="footer__post-form form">
-          <div class="form__wrapper">
-            <div class="form__title">{{ formTitle }}</div>
-            <div class="form__container">
-              <div class="form__inputs-block ui-inp">
+        <div class="footer__post-form block">
+
+          <div class="block__wrapper">
+            <div class="block__title">{{ formTitle }}</div>
+            <div class="block__container">
+              <form class="block__ui-form ui-form" name="user-post">
                 
                 <ui-custom-input
-                  class="ui-inp__name"
+                  class="ui-form__name"
                   :isError="false"
                   :placeholder="newPost.name"
                 ></ui-custom-input>
                 
                 <ui-custom-input
-                  class="ui-inp__email"
+                  class="ui-form__email"
                   :isError="false"
                   :placeholder="newPost.email"
                 ></ui-custom-input>
                 
                 <ui-custom-input
-                  class="ui-inp__phone"
+                  class="ui-form__phone"
                   :isError="false"
                   :placeholder="newPost.phone"
                 ></ui-custom-input>
-                <ui-custom-input-radio
-                  class="ui-inp__inp-radio"
-                ></ui-custom-input-radio>
+
+                <div class="ui-form__radio-wrapper">
+                  <p class="ui-form__radio-title">Select your position</p>
+                  <ui-custom-input-radio
+                    class="ui-form__inp-radio"
+                  ></ui-custom-input-radio>
+                </div>
                 
                 <ui-comp-upload-block
-                  class="ui-inp__upload-block"
+                  class="ui-form__upload-block"
                   :isError="false"
                   :placeholder="newPost.photo"
                 ></ui-comp-upload-block>
                 <ui-button-main
-                class="ui-inp__inp-button"
+                class="ui-form__inp-button"
                   :isDisabled="false"
                   :title="btnNameBot"
                   @buttonClick="handleClick()"
                 >{{ btnNameBot }}</ui-button-main>
                 
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -98,8 +103,7 @@ export default {
       right: 3rem;
     }
   &__post-form,
-  .form {
-    
+  .block {
     &__wrapper {
     }
     &__title {
@@ -117,8 +121,8 @@ export default {
       @include media('min', 'md') { width: 380px; }
       // margin: auto;
     }
-    &__inputs-block, 
-    .ui-inp {
+    &__ui-form, 
+    .ui-form {
       padding-bottom: 100px;
       &__name {
         margin-bottom: 50px;
@@ -129,6 +133,13 @@ export default {
       &__phone {
         margin-bottom: 43px;
       }
+      &__radio-wrapper {
+
+      }
+      &__radio-title {
+        @include body16;
+        margin-bottom: 10px;
+      } 
       &__inp-radio {
         margin-bottom: 50px;
       }
