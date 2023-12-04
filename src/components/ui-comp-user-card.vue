@@ -5,36 +5,12 @@
         <div class="user__photo" type="image">
           <img :src="require('@/assets/images/photo-cover.svg')" alt="user photo">
         </div>
-        <!-- <p class="user__name rel">{{ userCard.name }}</p>
+        <p class="user__name">{{ userCard.name }}</p>
         <div class="user__mid-wrapper">
-          <p class="user__job rel" @mouseover="handleHover" ref="job" data-tip='job'>{{ userCard.job }}</p>
-          <p class="user__email rel">{{ userCard.email }}</p>
-          <p class="user__phone rel">{{ userCard.phone }}</p> -->
-          
-          
 
-        <p 
-          class="user__name rel" 
-          id="name"
-          @mouseover="handleHover" 
-          @mouseleave="handleHover"
-        >
-          <!-- {{ userCard.name }}
-          <span 
-            v-if="toolTip.isHover && toolTip.el === 'name'"
-            :class="{ 'tooltip': toolTip }"
-            :style="tipPosition"
-          >
-            {{ userCard.name }}
-          </span> -->
-        </p>
-        <div class="user__mid-wrapper">
-          <p class="user__job rel" id="job">
-            {{ userCard.job }}
-            <!-- <span class="user__job-tooltip tooltip">{{ userCard.job }}</span> -->
-          </p>
+          <p class="user__job">{{ userCard.job }}</p>
           <p 
-            class="user__email rel" 
+            class="user__email rel"
             id="email"
             @mouseover="handleHover" 
             @mouseleave="handleHover"
@@ -48,11 +24,8 @@
               {{ userCard.email }}
             </span>
           </p>
+          <p class="user__phone">{{ userCard.phone }}</p>
 
-          <p class="user__phone rel" id="phone">
-            {{ userCard.phone }}
-            <!-- <span class="user__phone-tooltip tooltip">{{ userCard.phone }}</span> -->
-          </p>
         </div>
       </div>
     </div>
@@ -107,7 +80,7 @@ export default {
 .ui-comp-user-card,
 .card {
   height: 254px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: $bg-color2;
   &__container {
     margin: 0 auto;
@@ -154,7 +127,6 @@ export default {
 .rel {
   position: relative;
   cursor: pointer;
-  display: block;
 }
 .tooltip {
   position: absolute;

@@ -11,10 +11,13 @@
 //   }
 // }
 // // SCREEN SIZE & PADDINGS
-// @mixin gide-lines {
-//   border-left: 1px dotted grey;
-//   border-right: 1px dotted grey;
-// }
+@mixin gide-lines {
+  border-left: 1px dotted grey;
+  border-right: 1px dotted grey;
+}
+// @include gide-lines;
+
+
 // @mixin tech-mark {
 //   @include media('min', 'sm') { background-color: #deca98; }
 //   @include media('min', 'md') { background-color: #bf98de; }

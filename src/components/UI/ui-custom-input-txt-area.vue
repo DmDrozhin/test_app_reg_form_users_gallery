@@ -57,21 +57,18 @@ export default {
   computed: {
     ...mapGetters([ 'COLORS' ]),
 
-    border() { 
-      if (this.isError) {
-        return {
-          'border-width': '2px 2px 2px 0',
-          'border-style': 'solid',
-          'border-color': this.COLORS.err,
-          'padding': '13px 13px 13px 16px'
-        }
-      } else {
-        return {
-          'border-width': '1px 1px 1px 0',
-          'border-color': this.COLORS.norm,
-          // transform: 'translateY(1px)'
-        }
+    border() {
+      const err = {
+        border: `1px solid ${this.COLORS.err}`,
+        outline: `1px solid ${this.COLORS.err}`,
+        'border-left-width': 0,
+        'outline-left-width': 0
       }
+      const norm = {
+        border: `1px solid ${this.COLORS.norm}`,
+        'border-left-width': 0,
+      }
+      return this.isError ? err : norm
     },
 
     currColor() { return this.isError ? this.COLORS.err : this.COLORS.grey7E },
@@ -117,7 +114,7 @@ export default {
     }
     &:focus {
       color: $black87;
-      outline: none;
+      outline: none;      
     }
   }
   // &__hint-bottom {

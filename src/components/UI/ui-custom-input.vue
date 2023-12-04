@@ -68,22 +68,14 @@ export default {
   computed: {
     ...mapGetters([ 'COLORS' ]),
 
-    border() { 
-      if (this.flag) {
-        return {
-          'border-width': '2px',
-          'border-style': 'solid',
-          'border-color': this.COLORS.err,
-          'padding': '13px 13px 13px 15px'
-        }
-      } else {
-        return {
-          'border-width': '1px',
-          'border-style': 'solid',
-          'border-color': this.COLORS.norm,
-          // transform: 'translateY(1px)'
-        }
+    border() {
+      const err = { 
+        border: `1px solid ${this.COLORS.err}`, 
+        outline: `1px solid ${this.COLORS.err}` 
       }
+      const norm = { border: `1px solid ${this.COLORS.norm}` }
+      return this.flag ? err : norm
+      
     },
 
     currColor() { return this.flag ? this.COLORS.err : this.COLORS.grey7E },

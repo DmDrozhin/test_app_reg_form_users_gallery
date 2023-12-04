@@ -65,9 +65,11 @@ export default {
   &__container {
     @include container-width;
     margin: 0 auto;
+    // @include gide-lines;
   }
   &__wrapper {
     padding-top: 140px;
+    // @include gide-lines;
     // border: 1px solid teal;
   }
   &__title {
@@ -77,7 +79,6 @@ export default {
   }
   &__card-gallery {
     display: grid;
-    // place-content: center;
     @include main-gallery;
     grid-auto-flow: row;
     margin-bottom: 50px;
