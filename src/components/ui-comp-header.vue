@@ -53,20 +53,20 @@ export default {
     background-repeat: no-repeat;
     @include media('min', 'sm') { 
       background-position: -448px -316px;
-      background-size: 343% 164%;
+      background-size: 1233px 819px;
     }
     @include media('min', 'md') { 
-      background-position: -954px -316px;
-      background-size: 343% 164%;
+      background-position: -958px -316px;
+      background-size: 2638px 819px;
     }
     @include media('min', 'lg') { 
-      background-position: -1272px -412px;
-      background-size: 343% 164%;
+      background-position: -1267px -413px;
+      background-size: 3500px 1068px;
 
     }
     @include media('min', 'xl') { 
-      background-position: 50% 80%;
-      background-size: 219% 262%;
+      background-position: -695px -843px;
+      background-size: 2560px 1705px;
 
     }
     &__container{

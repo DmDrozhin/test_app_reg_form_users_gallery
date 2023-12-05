@@ -141,10 +141,10 @@ export default {
         margin-bottom: 10px;
       } 
       &__inp-radio {
-        margin-bottom: 50px;
+        margin-bottom: 47px;
       }
       &__upload-block {
-        margin-bottom: 53px;
+        margin-bottom: 50px;
       }
       &__inp-button {
         display: block;
