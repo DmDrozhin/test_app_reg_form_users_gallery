@@ -5,12 +5,12 @@ import store from './store'
 
 import comps from '@/components'
 import ui from '@/components/UI'
-const uiComps = [...comps, ...ui]
+// const uiComps = [...comps, ...ui]
 
 import '@/styles/main.scss'
 
 const app = createApp(App)
 
-uiComps.forEach(uic => app.component(uic.name, uic))
+ui.forEach(uic => app.component(uic.name, uic))
 
 app.use(store).use(router).mount('#app')

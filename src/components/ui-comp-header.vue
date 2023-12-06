@@ -46,7 +46,7 @@ export default {
     @include header-height;
     background-image: $bg-main-image;
     background-color: $bg-dimmer;
-    // background-blend-mode: multiply;
+    background-blend-mode: overlay;
     background-position-x: center;
     background-position-y: 85%;
     background-size: 210%;

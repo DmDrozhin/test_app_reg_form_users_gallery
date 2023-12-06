@@ -1,8 +1,8 @@
 <template>
   <div class="main-page page">
     <div class="page__container">
-      <ui-comp-header></ui-comp-header>
-      <ui-comp-main></ui-comp-main>
+      <!-- <ui-comp-header></ui-comp-header>
+      <ui-comp-main></ui-comp-main> -->
       <ui-comp-footer></ui-comp-footer>
     </div>
   </div>

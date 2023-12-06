@@ -22,11 +22,11 @@ export default {
   },
   props: {
     isDisabled: { type: Boolean, default: true },
-    title: { type: String||Number, default: 'button title' }
+    title: { type: String||Number, default: 'main btn' }
   },
   methods: {
     // handleClick() { this.$emit('buttonClick') }
-    handleClick() { console.log('Main button Click') }
+    handleClick() { this.$emit('buttonClick', this.title) }
   }
 }
 

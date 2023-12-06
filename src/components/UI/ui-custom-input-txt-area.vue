@@ -2,31 +2,36 @@
   <div class="ui-custom-input-txt-area input">
     <div class="input__container">
       
-      <!-- Not needed in this app -->
+      <!-- No needed in this app -->
       <!-- <ui-hint-top
         class="input__hint-top"
-        v-if="false"
-        :isError="isError"
+        v-if="isFocused"
+        :isError="inputData.isValid === false"
         :hint="hintTop"
         :color="currColor"
       ></ui-hint-top> -->
+      <!-- / No needed in this app -->
 
       <textarea
         class="input__input" 
         rows="1"
-        :value="placeholder" 
+        v-model="inputData.inpValue"
+        :placeholder="placeholderTxt"
         :style="border"
-        @focus="setFocus" 
-        @blur="setFocus"
+        @change.prevent="runHandler($event)"
+        @focus.stop="setFocus"
+        @blur.stop="setFocus"
       ></textarea>
 
-      <ui-hint-bottom
+      <!-- No needed in this app -->
+      <!-- <ui-hint-bottom
         class="input__hint-bottom"
-        v-if="isError"
-        :isError="isError"
+        v-if="inputData.isValid === false"
+        :isError="inputData.isValid === false"
         :hint="hintBottom"
         :color="currColor"
-      ></ui-hint-bottom>
+      ></ui-hint-bottom> -->
+      <!-- / No needed in this app -->
 
     </div>
   </div>
@@ -40,22 +45,33 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'ui-custom-input-txt-area',
   props: {
-    isError: { type: Boolean, default: true },
-    placeholder: { type: String, default: 'upload' },
+    inputData: {
+      inpName: { type: String, default: 'post-from-upload-url' },
+      // inpType: { type: String, default: 'textarea' },
+      inpPlaceholder: { type: String || Number, default: 'upload your photo' },
+      isValid: { type: Boolean, default: true },
+      errMessage: { type: String, default: 'error txt' },
+      isDisabled: { type: Boolean, default: false },
+      inpValue: { type: String || Number, default: 'bcvfbxcv' }, 
+    }
   },
   data() {
     return {
-      value: 'upload',
-      // hintTop: 'top label', // not needed in this mockup
-      hintBottom: 'err txt',
       isFocused: false
+      // hintTop: 'top label', // no needed in this app
+      // hintBottom: 'err txt', // no needed in this app
     }
   },
-  // watch: {
-  //   isFocused(a, b) { console.log('new value =>', a, 'old value =>', b) }
-  // },
+  // watch: { isFocused(a, b) { console.log('new value =>', a, 'old value =>', b) } },
+
   computed: {
     ...mapGetters([ 'COLORS' ]),
+
+    // capitalize the placeholder 1st letter
+    placeholderTxt () {
+      const ph = this.inputData.inpPlaceholder
+      return ph.charAt(0).toUpperCase() + ph.slice(1)
+    },
 
     border() {
       const err = {
@@ -68,13 +84,19 @@ export default {
         border: `1px solid ${this.COLORS.norm}`,
         'border-left-width': 0,
       }
-      return this.isError ? err : norm
+      return this.inputData.isValid ? norm : err
     },
 
-    currColor() { return this.isError ? this.COLORS.err : this.COLORS.grey7E },
+    currColor() { return this.inputData.isValid ? this.COLORS.grey7E : this.COLORS.err },
 
   },
   methods: {
+    runHandler (ev) {
+      const res = ev.target.value
+      if (res) this.$emit('update:modelValue', res)
+      else this.$emit('update:modelValue', '')
+    },
+
     setFocus(ev) {
       if (ev.type === 'focus') this.isFocused = true
       else if (ev.type === 'blur') this.isFocused = false
@@ -99,7 +121,7 @@ export default {
     box-sizing: border-box;
     width: inherit;
     height: 54px;
-    display:block;
+    display: block;
     resize: none;
     background-color: transparent;
     overflow: hidden;
@@ -108,17 +130,18 @@ export default {
     @include body16; // text style
     color: $grey7E;
     padding: $input-paddings;
-    text-transform: capitalize;
     &::placeholder {
       color: $grey7E;
     }
     &:focus {
       color: $black87;
-      outline: none;      
+      outline: none;
+    }
+    &:focus::placeholder {
+      color: $black87;
     }
   }
   // &__hint-bottom {
-
   // }
 }
 

@@ -7,82 +7,114 @@
           <div class="block__wrapper">
             <div class="block__title">{{ formTitle }}</div>
             <div class="block__container">
-              <form class="block__ui-form ui-form" name="user-post">
+              <form class="block__ui-form ui-form" name="user-post" @submit.prevent.stop>
                 
                 <ui-custom-input
                   class="ui-form__name"
-                  :isError="false"
-                  :placeholder="newPost.name"
+                  v-model="newPost.userName"
+                  :inputData="formData.user"
                 ></ui-custom-input>
                 
                 <ui-custom-input
                   class="ui-form__email"
-                  :isError="false"
-                  :placeholder="newPost.email"
+                  v-model="newPost.email"
+                  :inputData="formData.email"
                 ></ui-custom-input>
                 
                 <ui-custom-input
                   class="ui-form__phone"
-                  :isError="false"
-                  :placeholder="newPost.phone"
+                  v-model="newPost.phone"
+                  :inputData="formData.phone"
                 ></ui-custom-input>
 
                 <div class="ui-form__radio-wrapper">
-                  <p class="ui-form__radio-title">Select your position</p>
+                  <p class="ui-form__radio-title">
+                    Select your position
+                  </p>
                   <ui-custom-input-radio
                     class="ui-form__inp-radio"
+                    :inputData="formData.radio"
+                    @pickedRadio="this.newPost.job = $event"
                   ></ui-custom-input-radio>
                 </div>
-                
-                <ui-comp-upload-block
-                  class="ui-form__upload-block"
-                  :isError="false"
-                  :placeholder="newPost.photo"
-                ></ui-comp-upload-block>
+
+                <div class="ui-form__upload-block block">
+                  <div class="block__wrapper">
+                  
+                    <ui-custom-input-button
+                      class="block__button"
+                      :inputData="formData.button"
+                      @uploadClk="handleClick($event)"
+                    ></ui-custom-input-button>
+
+                    <ui-custom-input-txt-area
+                      class="block__textarea"
+                      :inputData="formData.uploadURL"
+                      v-model="newPost.photoURL"
+                  
+                    ></ui-custom-input-txt-area>
+                  
+                  </div>
+                </div>
+
                 <ui-button-main
-                class="ui-form__inp-button"
+                  class="ui-form__sign-up-button"
                   :isDisabled="false"
-                  :title="btnNameBot"
-                  @buttonClick="handleClick()"
-                >{{ btnNameBot }}</ui-button-main>
+                  :title="'Sing up'"
+                  @buttonClick="handleClick('signup')"
+                >{{ btnNameBot }}
+                </ui-button-main> 
                 
               </form>
             </div>
           </div>
         </div>
       </div>
-    <ui-comp-reg-success v-if="ifSuccess"></ui-comp-reg-success>
+    <ui-comp-reg-success v-if="isSuccess"></ui-comp-reg-success>
   </footer>
 </template>
 
 <script>
 import uiCompRegSuccess from '@/components/ui-comp-reg-success.vue'
 import uiLoader from '@/components/UI/ui-loader.vue'
+import { mapGetters } from 'vuex'
 export default {
   components: { uiCompRegSuccess, uiLoader },
   name: 'ui-comp-footer',
   data() {
     return{
       formTitle: 'Working with POST request',
-      btnNameBot: 'Sing up',
-      ifSuccess: true,
-      
+      isSuccess: true,
       // ***************
-      newPost: {
-        id: '',
-        name: 'Name',
-        email: 'Email',
-        phone: 'Phone',
-        position: 'Frontend developer',
-        photo: 'photo url',
-        isDisabled: false,
-      }
+      newPost: { 
+        id: 0,
+        userName: 'user name',
+        job: '',
+        userJob: '',
+        email: 'user email',
+        phone: 'user phone',
+        photoURL: '',
+        isValid: true,
+        tech: ''
+      },
+      userProfession: ''
     }
   },
-  methods: {
-    handleClick() { console.log('main page bottom button') }
+  computed: {
+    ...mapGetters(['formData'])
   },
-  computed: { }
+  // watch: {
+  //   'newPost.job'(stalo, bylo) {
+  //     console.log('new value', stalo)
+  //     console.log('old value', bylo)
+  //   }
+  // },
+
+  methods: {
+    handleClick(val) {
+      console.log(val) 
+    }
+  },
 }
 </script>
 
@@ -104,8 +136,8 @@ export default {
     }
   &__post-form,
   .block {
-    &__wrapper {
-    }
+    // &__wrapper {
+    // }
     &__title {
       text-align: center;
       @include heading1;
@@ -113,7 +145,7 @@ export default {
       margin-bottom: 50px;
     }
     &__container {
-      position: relative;
+      position: relative; // ?
       // @include gide-lines;
       // width: 380px;
       margin: 0 auto;
@@ -133,9 +165,9 @@ export default {
       &__phone {
         margin-bottom: 43px;
       }
-      &__radio-wrapper {
+      // &__radio-wrapper {
 
-      }
+      // }
       &__radio-title {
         @include body16;
         margin-bottom: 10px;
@@ -143,10 +175,37 @@ export default {
       &__inp-radio {
         margin-bottom: 47px;
       }
-      &__upload-block {
+      &__upload-block, 
+      .block {
         margin-bottom: 50px;
+        // temp
+        &__test-btn {
+          position: absolute;
+          top: -20px;
+          right: 0px;
+          // @include media('min', 'sm') { width: 245px; }
+          // @include media('min', 'md') { width: 297px; }
+          &:before {
+            content: 'test';
+            position: absolute;
+            left: -25px;
+            top: -5px;
+          }
+        }
+        // / temp
+
+        &__wrapper {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          // &__button { }
+        }
+        &__textarea {
+          flex: 1;
+        }
       }
-      &__inp-button {
+      &__sign-up-button {
         display: block;
         margin: 0 auto;
       }

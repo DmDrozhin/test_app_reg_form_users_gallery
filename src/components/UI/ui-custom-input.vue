@@ -1,5 +1,6 @@
 <template>
   <div class="ui-custom-input input">
+    <!-- TEST reasons-->
     <div class="input__test-btn" @click="toggle">
       <ui-arrow-filled-icon
         :direction="'rotate(180)'"
@@ -8,6 +9,7 @@
         :viewBox="'0 -5 24 24'"
       ></ui-arrow-filled-icon>
     </div>
+    <!-- / TEST reasons-->
 
     <div class="input__container">
 
@@ -15,25 +17,27 @@
         class="input__hint-top"
         v-if="isFocused"
         :isError="flag"
-        :hint="hintTop"
+        :hint="placeholderTxt"
         :color="currColor"
       ></ui-hint-top>
 
       <input 
         class="input__input" 
-        type="normal"
-        :placeholder="placeholder"
-        
+        :type="inputData.inpType"
+        :name="inputData.inpName"
+        v-model.lazy="inputData.inpValue"
+        :placeholder="placeholderTxt"
         :style="border"
-        @focus="setFocus" 
-        @blur="setFocus"
+        @input="runHandler"
+        @focus.stop="setFocus"
+        @blur.stop="setFocus"
       >
 
       <ui-hint-bottom
         class="input__hint-bottom"
         v-if="flag"
         :isError="flag"
-        :hint="hintBottom"
+        :hint="inputData.errMessage"
         :color="currColor"
       ></ui-hint-bottom>
 
@@ -42,31 +46,42 @@
 </template>
 
 <script>
-// API
-// :isError="false"
-// :placeholder="'upload your photo'"
 import { mapGetters } from 'vuex'
 export default {
   name: 'ui-custom-input',
+
   props: {
-    isError: { type: Boolean, default: true },
-    placeholder: { type: String||Number, default: 'upload' },
+    // name: { class: 'ui-form-name', name: 'post-from-name', type: 'text', placeholder: 'name', isValid: true, value: 'value' },
+    inputData: {
+      inpName: { type: String, default: 'some-inp-name' }, 
+      inpType: { type: String, default: 'text' }, 
+      inpPlaceholder: { type: String || Number, default: 'placeholder' }, 
+      isValid: { type: Boolean, default: true }, 
+      errMessage: { type: String, default: 'some error txt' }, 
+      isDisabled: { type: Boolean, default: false }, 
+      inpValue: { type: String || Number, default: 'inp value' }
+    }
   },
+
   data() {
     return {
       value: 'upload',
       flag: false,
-      hintTop: 'top label',
-      hintBottom: 'error txt',
       isFocused: false
     }
   },
-  // watch: {
-  //   isFocused(a, b) { console.log('new value =>', a, 'old value =>', b) }
-  // },
+
+  // it's for tech reasons
+  // watch: { isFocused(a, b) { console.log('new value =>', a, 'old value =>', b) } },
 
   computed: {
     ...mapGetters([ 'COLORS' ]),
+
+    // capitalize the placeholder 1st letter
+    placeholderTxt () {
+      const ph = this.inputData.inpPlaceholder
+      return ph.charAt(0).toUpperCase() + ph.slice(1)
+    },
 
     border() {
       const err = { 
@@ -82,15 +97,20 @@ export default {
 
   },
   methods: {
-    toggle () { this.flag = !this.flag },
+    toggle () { this.flag = !this.flag }, // test reasons
 
     setFocus(ev) {
       if (ev.type === 'focus') this.isFocused = true
-      else if (ev.type === 'blur') this.isFocused = false
-    }
+      else if (ev.type === 'blur') { this.isFocused = false }
+    },
+
+    runHandler (ev) {
+      const res = ev.target.value
+      if (res) this.$emit('update:modelValue', res)
+      else this.$emit('update:modelValue', '')
+    },
   }
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -98,10 +118,9 @@ export default {
 
 .ui-custom-input,
 .input {
-
-  position: relative; // temp
-
-  &__test-btn { // temp
+  // *temp
+  position: relative;
+  &__test-btn {
     position: absolute;
     top: -20px;
     right: 0px;
@@ -112,6 +131,7 @@ export default {
       top: -5px;
     }
   }
+  // */temp
 
   // &__container { }
   // &__hint-top { }

@@ -1,20 +1,21 @@
 <template>
   <div class="ui-custom-input-button input">
     <div class="input__container">
-
+      
+      <!-- @click.prevent="handleClick" -->
       <input 
-        class="input__input" 
-        type="button" 
-        :value="value"
+        class="input__input"
+        :type="inputData.inpType"
+        :name="inputData.inpName"
+        :value="inputData.inpPlaceholder"
         :style="border"
-        @click.prevent="handleClick"
+        @click.prevent="handleClick($event)"
       >
-
       <ui-hint-bottom
         class="input__hint-bottom"
-        v-if="isError"
-        :isError="isError"
-        :hint="hintBottom"
+        v-if="inputData.isValid === false"
+        :isError="inputData.isValid === false"
+        :hint="inputData.errMessage"
         :color="currColor"
       ></ui-hint-bottom>
 
@@ -24,15 +25,24 @@
 
 <script>
 // API
-// :isError="false"
-// :content="'upload your photo'"
+//
+//
 // @buttonClick="handleClick"
 import { mapGetters } from 'vuex'
 export default {
   name: 'ui-custom-input-button',
   props: {
-    isError: { type: Boolean, default: true },
-    content: { type: String||Number, default: 'upload' },
+
+    inputData: {
+      inpName: { type: String, default: 'post-from-button' },
+      inpType: { type: String, default: 'button' },
+      inpPlaceholder: { type: String || Number, default: 'upload' },
+      isValid: { type: Boolean, default: true },
+      errMessage: { type: String, default: 'error txt' },
+      isDisabled: { type: Boolean, default: false },
+      inpValue: { type: String || Number, default: 'dfgsd' }, 
+    }
+
   },
   data() {
     return {
@@ -50,13 +60,17 @@ export default {
         outline: `1px solid ${this.COLORS.err}` 
       }
       const norm = { border: `1px solid ${this.COLORS.black87}` }
-      return this.isError ? err : norm
+      return this.inputData.isValid ? norm: err
     },
     
-    currColor() { return this.isError ? this.COLORS.err : this.COLORS.grey7E },
+    currColor() { return this.inputData.isValid ? this.COLORS.grey7E : this.COLORS.err },
 
   },
-  methods: { handleClick() { this.$emit('buttonClick') } },
+  methods: { 
+    handleClick(ev) {
+      this.$emit('uploadClk', ev.target.value)
+    } 
+  },
 }
 
 </script>
@@ -74,20 +88,20 @@ export default {
   // ORIGINAL INP
   &__input {
     box-sizing: border-box;
-    width: 83px;
+    width: 83px; // fixed width acc to mock req
     height: 54px;
     background: none;
     border-style: solid;
 
     border-radius: $input-brd-radius 0 0 $input-brd-radius;
     @include body16;
-    padding: $input-paddings;
     text-transform: capitalize;
+    padding: $input-paddings;
+
     &:focus {
+      border-radius: $input-brd-radius 0 0 $input-brd-radius;
       border-color: v-bind(currColor);
-    }
-    &:active {
-      border-color: v-bind(currColor);
+      outline: none;
     }
   }
   // &__hint-bottom {
