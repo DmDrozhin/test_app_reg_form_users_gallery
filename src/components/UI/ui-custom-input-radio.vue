@@ -1,11 +1,12 @@
 <template>
   <div class="ui-custom-input-radio">
-    <div class="container">
-      <div class="radio" v-for="(it, idx) in inputData.labels" :key="idx">
+    <div class="container" v-if="jobList">
+      <div class="radio" v-for="(it, idx) in jobList" :key="idx">
         <input 
           :id="idx" 
-          name="post-form-radio" 
-          type="radio" 
+          :name="'inp-form-' + inputData.name"
+          :type="inputData.sets.type"
+          :tabindex="inputData.sets.tabindex + idx"
           :checked="it.isChecked"
           :disabled="it.disabled"
           :value="it.label"
@@ -13,7 +14,9 @@
         >
         <label :for="idx" class="radio-label">{{ it.label }}</label>
       </div>
+      <div class="err-msg" v-if="errMsg">{{ errMsg }}</div>
     </div>
+    <div class="err-load-msg" v-else>{{ errLoading }}</div>
   </div>
 </template>
 
@@ -21,48 +24,46 @@
 
 export default {
   name: 'ui-custom-input-radio',
-  props: { inputData: { 
-        inpName:  { type: String, default: 'post-from-radio' },
-        inpType: { type: String, default: 'radio' }, 
-        labels: { type: Array, default: () => { 
-            return [ { label: 'Frontend developer', isChecked: false, disabled: false },
-              { label: 'Backend developer', isChecked: 'checked', disabled: false },
-              { label: 'Designer', isChecked: false, disabled: false },
-              { label: 'QA', isChecked: false, disabled: false } ]
-          }
-        }, 
-        isValid: { type: Boolean, default: true },
-        errMessage: { type: String, default: 'error msg' },
-        value: { type: String || Number, default: ''}
-      }
-  },
+  props: { inputData: { type: Object, default: () => {} } },
+
   data() {
     return {
-      some: ''
+      errLoading: 'Job positions info hasn\'t been uploaded !'
     }
   },
+
+  computed: {
+    errMsg() {
+      const err = this.inputData.err
+      const list = this.inputData.errList
+      return err ? list[this.inputData.err - 1] : false
+    },
+    jobList() {
+      return this.inputData.labels ? this.inputData.labels : false
+    }
+  },
+
   methods: {
     handleCheck(ev) {
-      // console.log(ev.target.value)
-      this.$emit('pickedRadio', ev.target.value)
+      const upData = {}
+      upData.name = this.inputData.name
+      upData.inpValue = ev.target.value
+      upData.err = 0
+      this.$store.dispatch('formData/setInpData', upData)
     }
   },
-  computed: {
-
-  }
-
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/styles/main.scss';
-
 .ui-custom-input-radio {
   // $color1: #f4f4f4;
   $color1:  #F8F8F8;
   $color2: $secondary;
+  // .container {
 
-
+  // }
   .radio {
     margin-bottom: 7px;
     &:last-child {
@@ -134,5 +135,15 @@ export default {
         }
       }
     }
+  }
+  .err-msg {
+    position: absolute;
+    @include body12;
+    color: $error;
+    margin: 4px 0 0 16px;
+  }
+  .err-load-msg {
+    @include body16;
+    color: $error;
   }
 }</style>

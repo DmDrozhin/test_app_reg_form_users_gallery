@@ -2,25 +2,36 @@
   <div class="ui-comp-nav-menu menu">
     <div class="menu__container">
       <div class="menu__wrapper">
-        <div class="menu__img"></div>
+
+        <a href="#header">
+          <div class="menu__img"></div>
+        </a>
+        
         <div class="menu__nav nav">
-          <ui-button-main
-            class="menu__ui-button"
-            :isDisabled="isDisabled"
-            :title="btnNav1Name"
-            @buttonClick="handleClick(1)"
-          >{{ btnNav1Name }}</ui-button-main>
-          <ui-button-main
-            class="menu__ui-button"
-            :isDisabled="isDisabled"
-            :title="btnNav2Name"
-            @buttonClick="handleClick(2)"
-          >{{ btnNav2Name }}</ui-button-main>
+          <a href="#main">
+            <ui-button-main
+              class="menu__ui-button"
+              :isDisabled="isDisabled"
+              :title="btnNav1Name"
+              >
+                {{ btnNav1Name }}
+              </ui-button-main>
+          </a>
+
+          <a href="#footer">
+            <ui-button-main
+              class="menu__ui-button"
+              :isDisabled="isDisabled"
+              :title="btnNav2Name"
+            >
+              {{ btnNav2Name }}
+            </ui-button-main>
+          </a>
+
         </div>
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -50,7 +61,7 @@ export default {
 .ui-comp-nav-menu, 
 .menu {
   background-color: $bg-color2;
-  height: 60px;
+  height: $nav-height;
   &__container {
     height: inherit;
     margin: auto;

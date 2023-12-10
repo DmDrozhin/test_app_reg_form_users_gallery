@@ -1,26 +1,26 @@
 <template>
-  <div class="ui-comp-header block">
+  <div class="comp-header block" id="header">
     <header class="block__header header">
         <div class="header__container">
           <div class="header__wrapper">
             <h1 class="header__title">{{ title }}</h1>
             <p class="header__title-adds">{{ titleAdds }}</p>
-            <ui-button-main
-              class="header__button"
-              :isDisabled="isDisabled"
-              :title="btnTopName"
-              @buttonClick="handleClick()"
-            >{{ btnTopName }}</ui-button-main>
+            <a href="#footer">
+              <ui-button-main
+                class="header__button"
+                :isDisabled="isDisabled"
+                :title="btnTopName"
+              >{{ btnTopName }}</ui-button-main>
+            </a>
           </div>
         </div>
       </header>
   </div>
-  
 </template>
 
 <script>
 export default {
-  name: 'ui-comp-header',
+  name: 'comp-header',
   data() {
     return{
       title: 'test assignment for front-end developer',
@@ -29,46 +29,25 @@ export default {
       btnTopName: 'sign up',
       isDisabled: false,
     }
-  },
-  methods: {  
-    handleClick() { console.log('header button clicked') }
-  },
-  computed: { }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/styles/main.scss';
-.ui-comp-header, 
+.comp-header, 
   .block {
   &__header, 
   .header {
+    padding-top: $nav-height;
+    margin-bottom: 70px;
     @include header-height;
-    background-image: $bg-main-image;
+    @include header-bg;
     background-color: $bg-dimmer;
     background-blend-mode: overlay;
-    background-position-x: center;
-    background-position-y: 85%;
-    background-size: 210%;
     background-repeat: no-repeat;
-    @include media('min', 'sm') { 
-      background-position: -448px -316px;
-      background-size: 1233px 819px;
-    }
-    @include media('min', 'md') { 
-      background-position: -958px -316px;
-      background-size: 2638px 819px;
-    }
-    @include media('min', 'lg') { 
-      background-position: -1267px -413px;
-      background-size: 3500px 1068px;
-
-    }
-    @include media('min', 'xl') { 
-      background-position: -695px -843px;
-      background-size: 2560px 1705px;
-
-    }
+    background-size: cover;
+    background-position: center center;
     &__container{
       height: 100%;
       @include header-top-pds;

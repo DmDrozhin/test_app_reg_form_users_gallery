@@ -1,0 +1,115 @@
+// General breakpoints
+// $breaks: ("sm":360px, "md":768px, "lg":1024px, "xl":2560px);
+$breaks: ("sm":360px, "md":768px, "lg":1024px, "xl":1280px);
+
+@mixin media($min-max, $media) {
+  @each $size, $resolution in $breaks {
+    @if $media == $size {
+      @media only screen and (#{$min-max}-width: $resolution) {
+        @content;
+      }
+    }
+  }
+}
+// Main screen
+@mixin general-width {
+  @include media('min', 'sm') { width: 360px; }
+  @include media('min', 'md') { width: 768px; }
+  @include media('min', 'lg') { width: 1024px; }
+  @include media('min', 'xl') { width: 1170px; }
+}
+// Main container
+@mixin container-width {
+  // @include gide-lines;
+  @include media('min', 'sm') { width: 328px; }
+  @include media('min', 'md') { width: 704px; }
+  @include media('min', 'lg') { width: 904px; }
+  @include media('min', 'xl') { width: 1170px; }
+}
+
+// Main comp users gallery
+@mixin gallery-container {
+  @include media('min', 'sm') { height: auto; }
+  @include media('min', 'md') { height: 968px; }
+  @include media('min', 'lg') { height: 711px; }
+  @include media('min', 'xl') { height: 711px; }
+}
+
+@mixin main-gallery {
+  @include media('min', 'sm') {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+  @include media('min', 'md') { 
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+  }
+  @include media('min', 'lg') { 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 29px;
+  }
+  @include media('min', 'xl') { 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 29px;
+  }
+}
+// Main comp users gallery user card container
+@mixin user-card {
+  // @include gide-lines;
+  @include media('min', 'sm') { max-width: 288px; }
+  @include media('min', 'md') { max-width: 304px; }
+  @include media('min', 'lg') { max-width: 242px; }
+  @include media('min', 'xl') { max-width: 330px; }
+}
+
+// NAV Menu
+$nav-height: 60px;
+
+// Header central block
+@mixin header-top-pds {
+  @include media('min', 'sm') { padding-top: 40px }
+  @include media('min', 'md') { padding-top: 89px }
+  @include media('min', 'lg') { padding-top: 164px }
+  @include media('min', 'xl') { padding-top: 164px }
+}
+// Header height
+@mixin header-height {
+  @include media('min', 'sm') { height: 500px }
+  @include media('min', 'md') { height: 500px }
+  @include media('min', 'lg') { height: 650px }
+  @include media('min', 'xl') { height: 650px }
+}
+
+// Header background images
+@mixin header-bg {
+  @include media('min', 'sm') { 
+    background-image: $bg-image-sm-jpg;
+    background-image: image-set(
+      $bg-image-sm-jpg
+      $bg-image-sm-webp
+    );
+  }
+  @include media('min', 'md') { 
+    background-image: $bg-image-md-jpg;
+    background-image: image-set(
+      $bg-image-md-jpg
+      $bg-image-md-webp
+    );
+  }
+  @include media('min', 'lg') { 
+    background-image: $bg-image-lg-jpg;
+    background-image: image-set(
+      $bg-image-lg-jpg
+      $bg-image-lg-webp
+    );
+  }
+  @include media('min', 'xl') { 
+    background-image: $bg-image-xl-jpg;
+    background-image: image-set(
+      $bg-image-xl-jpg
+      $bg-image-xl-webp
+    );
+    background-position-x: center;
+    background-position-y: 85%;
+  }
+}

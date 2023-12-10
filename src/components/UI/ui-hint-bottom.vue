@@ -1,7 +1,7 @@
 <template>
   <div class="ui-hint-bottom hint">
     <div class="hint__wrapper">
-      <span class="hint__txt">
+      <span class="hint__txt" :class="{ 'err-txt': isError }">
         {{ hint }}
       </span>
     </div>
@@ -12,21 +12,18 @@
 // API
 // :isError="false"
 // :hint="'error txt'"
-// :color="'#7E7E7E'"
 export default {
   name: 'ui-hint-bottom',
   data() {
     return {}
   },
   props: {
-    // isDisabled: { type: Boolean, default: false },
     isError: { type: Boolean, default: false },
     hint: { type: String||Number, default: 'error text' },
-    color: { type: String, default: '#7E7E7E' }
-  },
+  }
 }
-
 </script>
+
 <style lang="scss" scoped>
 @import '@/styles/main.scss';
 .ui-hint-bottom, 
@@ -46,7 +43,10 @@ export default {
   &__txt {
     @include body12;
     padding-left: 18px;
-    color: v-bind(color);
+  }
+  .err-txt {
+    color: $error;
   }
 }
+
 </style>

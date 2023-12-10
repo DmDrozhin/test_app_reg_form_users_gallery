@@ -23,10 +23,15 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/main.scss';
   .app {
-    &__nav, 
+    position: relative;
+    &__nav,
     .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       background-color: $bg-color2;
+      z-index: 99;
       &__container {
         margin: 0 auto;
         @include container-width;

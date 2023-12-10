@@ -2,30 +2,28 @@
   <div class="ui-comp-user-card card">
     <div class="card__container">
       <div class="card__wrapper user">
-        <div class="user__photo" type="image">
-          <img :src="require('@/assets/images/photo-cover.svg')" alt="user photo">
+        <div class="user__reg-date">{{ date }}</div>
+        <div class="user__photo">
+          <img :src="photo" @error="handleErr" alt="user photo">
         </div>
+        
         <p class="user__name">{{ userCard.name }}</p>
         <div class="user__mid-wrapper">
+          <p class="user__job">{{ userCard.position }}</p>
 
-          <p class="user__job">{{ userCard.job }}</p>
-          <p 
-            class="user__email rel"
-            id="email"
+          <p class="user__email rel" id="email"
             @mouseover="handleHover" 
             @mouseleave="handleHover"
-          >
-            {{ userCard.email }}
-            <span 
-              v-if="toolTip.isHover && toolTip.el === 'email'"
-              :class="{ 'tooltip': toolTip }"
-              :style="tipPosition"
-            >
-              {{ userCard.email }}
-            </span>
-          </p>
-          <p class="user__phone">{{ userCard.phone }}</p>
+          >{{ userCard.email }}</p>
 
+          <div class="user__email-tooltip block">
+            <p class="block__tooltip"
+              v-if="toolTip.isHover && toolTip.el === 'email'"
+              :style="tipPosition"
+            >{{ userCard.email }}</p>
+          </div>
+            
+          <p class="user__phone">{{ phone }}</p>
         </div>
       </div>
     </div>
@@ -40,35 +38,45 @@ export default {
   name: 'ui-comp-user-card',
   props: { 
     userCard: { type: Object, default: () => {} },
-    idx: { type: Number, default: 0 }
   },
   data() {
     return{
       cont: 'some content',
-      toolTip: { isHover: false, el: '', x: 0 }
-      
+      toolTip: { isHover: false, el: '', x: 0 },
+      altImg: require('@/assets//images/photo-cover.svg'),
+      isImgOk: true
     }
   },
   computed: { 
-    tipPosition () { return {
-        left: `${this.toolTip.x - 20}px`,
-        // transform: `translateX(${this.toolTip.x}px)`,
-      }
-    }
+    // tipPosition () { return { left: `${this.toolTip.x - 20}px` } },
+    tipPosition () { return { transform: `translateX(${this.toolTip.x - 20}px)` } },
+    
+    photo() { return this.isImgOk ? this.userCard.photo : this.altImg },
+
+    phone() {
+      let n = this.userCard ? this.userCard.phone : null
+      let x = n && n.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/)
+      if (!x) return n
+      let res = `+${x[1] ? x[1] + ' ' : ''}(${x[2] ? x[2] + ') ' : ''}${x[3]}${x[4] ? ` ${x[4]}` : ''}${x[5] ? ` ${x[5]}` : ''}`
+      return res
+    },
+    date() {return new Date(this.userCard.registration_timestamp).toDateString() }
   },
+
   methods: {
-    handleHover(e) {
-      // console.log(e)
-      if (e.target.id === '') return
+    handleErr(ev) { 
+      this.isImgOk = false
+      // ev.target.src = this.altImg
+    },
+    handleHover(ev) {
+      if (ev.target.id === '') return
       else {
-        if (e.type === 'mouseover') {
+        if (ev.type === 'mouseover') {
           this.toolTip.isHover = true
-          this.toolTip.el = e.target.id
-          this.toolTip.x = e.offsetX
+          this.toolTip.el = ev.target.id
+          this.toolTip.x = ev.offsetX
         }
-        if (e.type === 'mouseleave') {
-          this.toolTip = {}
-        }
+        if (ev.type === 'mouseleave') this.toolTip = {}
       }
     }
   },
@@ -84,10 +92,12 @@ export default {
   background-color: $bg-color2;
   &__container {
     margin: 0 auto;
-    // width: 304px;
+    @include user-card;   
   }
   &__wrapper,
   .user {
+    position: relative;
+    max-width: inherit;
     padding: 20px;
     // border: 1px solid hotpink;
     display: flex;
@@ -95,28 +105,60 @@ export default {
     align-items: center;
     gap: 20px;
     text-align: center;
+    &__reg-date {
+      position: absolute;
+      @include body12;
+      left: 10px;
+      top: -15px;
+    }
     &__photo {
       width: 70px;
       height: 70px;
-      border-radius: 50%;
+      
+      & > img {
+        border-radius: 50%;
+      }
     }
     &__name {
+      max-width: inherit;
       position: relative;
       text-align: center;
       @include body16;
-      // @include txt-ellipsis;
+      @include txt-ellipsis;
     }
     &__mid-wrapper {
+      max-width: inherit;
       text-align: center;
     }
     &__job {
+      max-width: inherit;
       @include body16;
-      // @include txt-ellipsis;
+      @include txt-ellipsis;
     }
 
     &__email {
+      max-width: inherit;
       @include body16;
-      // @include txt-ellipsis;
+      @include txt-ellipsis;
+    }
+    &__email-tooltip-block, 
+    .block {
+      position: relative;
+      width: inherit;
+      height: 0;
+      &__tooltip {
+        width: inherit;
+        position: absolute;
+        transform: translateY(22px);
+        border-radius: $brd-radius;
+        background-color: $black87;
+        @include body16;
+        color: $bg-color2;
+        @include txt-ellipsis;
+        padding: 3px 16px;
+        z-index: 5;
+        // display: none;
+      }
     }
     &__phone {
       @include body16;
@@ -128,16 +170,6 @@ export default {
   position: relative;
   cursor: pointer;
 }
-.tooltip {
-  position: absolute;
-  bottom: -45px;
-  border-radius: $input-brd-radius;
-  @include body16;
-  padding: 3px 16px;
-  background-color: $black87;
-  color: $bg-color2;
-  z-index: 1;
-  white-space: nowrap;
-}
+
 
 </style>

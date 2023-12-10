@@ -1,12 +1,13 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import MainPage from '@/views/MainPage.vue'
+import { createRouter, createWebHistory } from "vue-router"
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: MainPage
+    name: 'main',
+    component: () => import('@/views/MainPage.vue')
   },
+
+
   // {
   //   path: '/about',
   //   name: 'about',
@@ -15,11 +16,10 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   // }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  // history: createWebHistory(process.env.NODE_ENV === 'production' ? process.env.GP_BASE_URL : process.env.BASE_URL),
   routes
 })
 

@@ -3,10 +3,11 @@
     class="ui-button-main button"
     type="button"
     :name="title"
+    :class="{'dis-btn': isDisabled }"
     @click="handleClick()"
   >
     <!-- <slot></slot> -->
-    <p class="button__title">{{ title }}</p>
+    <p class="button__title" :class="{ 'dis-txt': isDisabled }">{{ title }}</p>
   </button>
 </template>
 
@@ -58,10 +59,13 @@ export default {
   &__title:hover {
     color: $black87;
   }
-  &:disabled {
-    background-color: $btn-disabled;
-    color: $white87;
-    pointer-events: none;
-  }
+}
+.dis-btn {
+  background-color: $btn-disabled;
+  pointer-events: none;
+  cursor: none;
+}
+.dis-txt {
+  color: $white87;
 }
 </style>

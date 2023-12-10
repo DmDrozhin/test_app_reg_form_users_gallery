@@ -1,29 +1,28 @@
 <template>
   <div class="main-page page">
     <div class="page__container">
-      <!-- <ui-comp-header></ui-comp-header>
-      <ui-comp-main></ui-comp-main> -->
-      <ui-comp-footer></ui-comp-footer>
+      <comp-header></comp-header>
+      <comp-main></comp-main>
+      <comp-footer></comp-footer>
     </div>
   </div>
 </template>
 
 <script>
-import uiCompHeader from '@/components/ui-comp-header.vue'
-import uiCompMain from '@/components/ui-comp-main.vue'
-import uiCompFooter from '@/components/ui-comp-footer.vue'
+import CompHeader from '@/components/comp-header.vue'
+import CompMain from '@/components/comp-main.vue'
+import CompFooter from '@/components/comp-footer.vue'
 
 export default {
-  components: { uiCompHeader, uiCompMain, uiCompFooter },
+  components: { CompHeader, CompMain, CompFooter },
   name: 'main-page',
   data() {
     return {
-      
     }
   },
   computed: {},
   methods: {
-    handleClick() { console.log('main page bottom button') }
+    handleClick() { console.log('main page bottom button') },
   },
 }
 </script>
@@ -34,6 +33,7 @@ export default {
 .page {
   &__container {
     height: 100%;
+    scroll-behavior: smooth;
     // @include tech-mark;
   }
 }

@@ -1,8 +1,9 @@
 {
-  "name": "2023-11-29_abz-agency-test",
+  "name": "abz-agency-test",
+  "description": "D.Drozhin test SPA",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dmdrozhin.github.io/test-work-abz-agency/",
+  "homepage": "/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

@@ -1,15 +1,11 @@
-// Background
-$bg-main-image: url('../assets/images/pexels-alexandr-podvalny-1227513.jpeg');
-$bg-main-icon: url('../assets/images/Logo.svg');
-
-// Main button
-// Normal
-$btn-pd: 4px 23px;
-$btn-rd: 16px;
-
-// Inputs style
-$input-brd-radius: 4px;
-$input-paddings: 14px 14px 14px 16px;
+@font-face {
+  font-family: 'Nunito-Regular';
+  src: url('@/assets/fonts/Nunito-Regular.ttf') format('truetype'),
+      url('@/assets/fonts/Nunito-Regular.eot?#iefix') format('embedded-opentype'),
+      url('@/assets/fonts/Nunito-Regular.woff2') format('woff2'),
+      url('@/assets/fonts/Nunito-Regular.woff') format('woff'),
+      url('@/assets/fonts/Nunito-Regular.otf') format('otf');
+}
 
 // FONTS
 // Component <Heading=«h1»> «normal»> 
@@ -39,25 +35,10 @@ $input-paddings: 14px 14px 14px 16px;
   line-height: 14px;
 }
 
-@mixin txt-ellipsis { // brakes absolute position
-  display: block;
-  width: 100%;
+@mixin txt-ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
-  pointer-events: auto;
   overflow: hidden;
-}
-
-@mixin tooltip {
-  position: absolute;
-  bottom: -45px;
-  left: 40%;
-  border-radius: $input-brd-radius;
-  @include body16;
-  padding: 3px 16px;
-  background-color: $black87;
-  color: $bg-color2;
-  z-index: 1;
 }
 
 @mixin capitalize {
@@ -65,4 +46,3 @@ $input-paddings: 14px 14px 14px 16px;
     text-transform: capitalize;
   }
 }
-// @include capitalize;
