@@ -1,14 +1,12 @@
 <template>
-  <div class="ui-comp-reg-success reg-success">
-    <div class="reg-success__title">{{ title }}</div>
-    <div class="reg-success__container">
+    <div class="ui-comp-reg-success reg-success">
       <div class="reg-success__wrapper">
-        <div class="reg-success__image" type="image">
+        <div class="reg-success__title">{{ title }}</div>
+        <div class="reg-success__container">
+          <div class="reg-success__image" type="image"></div>
         </div>
       </div>
     </div>
-  </div>
-  
 </template>
 
 <script>
@@ -32,15 +30,15 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/main.scss';
 
-.ui-comp-reg-success, 
+.ui-comp-reg-success,
 .reg-success {
+  padding: 70px 0 100px 0;
+  &__wrapper {
+    @include success-section
+  }
   &__container {
     width: 328px;
     margin: 0 auto;
-  }
-  &__wrapper {
-    height: 380px;
-    margin-bottom: 100px;
   }
   &__title {
     text-align: center;

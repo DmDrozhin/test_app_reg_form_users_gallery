@@ -1,0 +1,37 @@
+{
+  "message": "Request failed with status code 409",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 409\n    at settle (webpack-internal:///./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///./node_modules/axios/lib/adapters/xhr.js:111:66)",
+  "config": {
+      "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+      },
+      "adapter": [
+          "xhr",
+          "http"
+      ],
+      "transformRequest": [
+          null
+      ],
+      "transformResponse": [
+          null
+      ],
+      "timeout": 0,
+      "xsrfCookieName": "XSRF-TOKEN",
+      "xsrfHeaderName": "X-XSRF-TOKEN",
+      "maxContentLength": -1,
+      "maxBodyLength": -1,
+      "env": {},
+      "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Token": "eyJpdiI6IklVbDJrN3YxTjFlUm81OGV4d004cWc9PSIsInZhbHVlIjoiV3JhRDg0QkpMUTEyR2JOaHQxZ1wvNllDZ2xHMEZ1ZXF3U29uQncyY1dOb2V6MW5xRzBLZlY2V1VkMkdsYVNlcWJaQ0tabXR3MW5RdXRNUW1Rd1pXZDN3PT0iLCJtYWMiOiJiY2JhMTZhOTVlZjgwYWM3Njg4MmViMDE0Yzk1MmI2Y2I1MGZmNzIzZGY0YzY1ZmI2ZDRjZjJjYzA2ODA2NDhlIn0="
+      },
+      "url": "https://frontend-test-assignment-api.abz.agency/api/v1/users",
+      "method": "post",
+      "data": {}
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 409
+}

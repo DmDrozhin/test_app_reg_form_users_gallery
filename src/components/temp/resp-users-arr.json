@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "total_pages": 9,
+  "total_users": 49,
+  "count": 1,
+  "page": 9,
+  "links": {
+    "next_url": null,
+    "prev_url": "https://frontend-test-assignment-api.abz.agency/api/v1/users?page=8&count=6"
+  },
+  "users": [
+    {
+      "id": 45,
+      "name": "Melyssa Heidenreich",
+      "email": "maurice74@miller.com",
+      "phone": "+380959411825",
+      "position": "Security",
+      "position_id": 3,
+      "registration_timestamp": 1604494937,
+      "photo": "https://frontend-test-assignment-api.abz.agency/images/users/5fa2a659ac24c45.jpeg"
+    }
+  ]
+}
+

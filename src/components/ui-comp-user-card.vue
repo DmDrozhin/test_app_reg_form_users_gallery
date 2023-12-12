@@ -4,7 +4,8 @@
       <div class="card__wrapper user">
         <div class="user__reg-date">{{ date }}</div>
         <div class="user__photo">
-          <img :src="photo" @error="handleErr" alt="user photo">
+          <img v-src-exceptions="userCard.photo" alt="user photo">
+          <!-- <img :src="photo" @error="handleErr" alt="user photo"> -->
         </div>
         
         <p class="user__name">{{ userCard.name }}</p>
@@ -23,7 +24,7 @@
             >{{ userCard.email }}</p>
           </div>
             
-          <p class="user__phone">{{ phone }}</p>
+          <p class="user__phone" v-phone-format>{{ userCard.phone }}</p>
         </div>
       </div>
     </div>
@@ -44,7 +45,8 @@ export default {
       cont: 'some content',
       toolTip: { isHover: false, el: '', x: 0 },
       altImg: require('@/assets//images/photo-cover.svg'),
-      isImgOk: true
+      isImgOk: true,
+      except: 'https://frontend-test-assignment-api.abz.agency/images/placeholders/placeholder.png'
     }
   },
   computed: { 
@@ -53,13 +55,6 @@ export default {
     
     photo() { return this.isImgOk ? this.userCard.photo : this.altImg },
 
-    phone() {
-      let n = this.userCard ? this.userCard.phone : null
-      let x = n && n.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/)
-      if (!x) return n
-      let res = `+${x[1] ? x[1] + ' ' : ''}(${x[2] ? x[2] + ') ' : ''}${x[3]}${x[4] ? ` ${x[4]}` : ''}${x[5] ? ` ${x[5]}` : ''}`
-      return res
-    },
     date() {return new Date(this.userCard.registration_timestamp).toDateString() }
   },
 
@@ -117,6 +112,8 @@ export default {
       
       & > img {
         border-radius: 50%;
+        width: 70px;
+        height: 70px;
       }
     }
     &__name {
@@ -149,7 +146,7 @@ export default {
       &__tooltip {
         width: inherit;
         position: absolute;
-        transform: translateY(22px);
+        top: 19px;
         border-radius: $brd-radius;
         background-color: $black87;
         @include body16;

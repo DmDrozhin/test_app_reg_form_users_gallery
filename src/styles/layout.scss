@@ -113,3 +113,10 @@ $nav-height: 60px;
     background-position-y: 85%;
   }
 }
+
+@mixin success-section {
+  @include media('min', 'sm') { height: 781px }
+  @include media('min', 'md') { height: 741px }
+  @include media('min', 'lg') { height: 741px }
+  @include media('min', 'xl') { height: 741px }
+}

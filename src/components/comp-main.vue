@@ -1,7 +1,7 @@
 <template>
   <main class="comp-main main" id="main">
     <div class="main__container">
-      <ui-loader class="main__loader" v-if="isLoader"></ui-loader>
+      <ui-loader class="main__loader" v-if="false"></ui-loader>
       <div class="main__wrapper">
         <h1 class="main__title">{{ title }}</h1>
         <div class="main__gallery" v-if="users">
@@ -36,14 +36,14 @@ export default {
   data() {
     return{
       title: 'Working with GET request',
-      errMessage: 'Users info hasn\'t been loaded'
+      errMessage: 'Users info hasn\'t been loaded',
     }
   },
   computed: {
-    ...mapGetters('serverData', ['loadStat', 'users', 'nav', 'nextUrl']),
+    ...mapGetters('serverData', ['users', 'urls', 'nextUrl']),
 
     next() { return this.nextUrl === null ? false : true },
-    isLoader() { return this.loadStat.idn === 'users' ? this.loadStat.isON : false }
+    // isLoader() { return this.loadStat.idn === 'users' ? this.loadStat.isON : false }
   },
 
   methods: {
@@ -55,7 +55,7 @@ export default {
   },
 
   mounted() {
-    this.getFromServ({ url: this.nav.urlUsers, idn: 'users' })
+    this.getFromServ({ url: this.urls.urlStart, idn: 'users' })
   },
 }
 </script>

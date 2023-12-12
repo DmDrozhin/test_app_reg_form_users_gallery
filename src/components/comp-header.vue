@@ -37,9 +37,9 @@ export default {
 @import '@/styles/main.scss';
 .comp-header, 
   .block {
+  padding-top: $nav-height;
   &__header, 
   .header {
-    padding-top: $nav-height;
     margin-bottom: 70px;
     @include header-height;
     @include header-bg;

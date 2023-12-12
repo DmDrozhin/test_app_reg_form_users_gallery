@@ -1,0 +1,75 @@
+{
+  "data": {
+    "success": true,
+    "token": "eyJpdiI6IlJHaGdcL1NMRXZMRjh0QUZIUUNYV0NBPT0iLCJ2YWx1ZSI6Ik5uOStaaGNmN1VvMDB6QlA1bnZLb0NIZXQ0MlErM3FhTStWQ085dFNHTTYzSDl4ekkzZmc0ckx2NlVKQjJ6clErbzNNWXhFM2o0QTVGSFI2Y2lmVEtBPT0iLCJtYWMiOiI5YmM3Y2Y3ODlhZDUzYjk2NWNkMDAyNDE0ZDc0MWYwYjY2NGJlMWY2M2UwOTU4YTkxNzhlNGM1OThiMzU3Y2MwIn0="
+  },
+  "status": 200,
+  "statusText": "",
+  "headers": "[object AxiosHeaders]",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http"
+    ],
+    "transformRequest": [
+      {
+        "_custom": {
+          "type": "function",
+          "display": "<span style=\"opacity:.5;\">function</span> transformRequest(data, headers)",
+          "tooltip": "<pre>function transformRequest(data, headers) {\n    const contentType = headers.getContentType() || '';\n    const hasJSONContentType = contentType.indexOf('application/json') > -1;\n    const isObjectPayload = _utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isObject(data);\n    if (isObjectPayload && _utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isHTMLForm(data)) {\n      data = new FormData(data);\n    }\n    const isFormData = _utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isFormData(data);\n    if (isFormData) {\n      if (!hasJSONContentType) {\n        return data;\n      }\n      return hasJSONContentType ? JSON.stringify((0,_helpers_formDataToJSON_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(data)) : data;\n    }\n    if (_utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isArrayBuffer(data) || _utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isBuffer(data) || _utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isStream(data) || _utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isFile(data) || _utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isBlob(data)) {\n      return data;\n    }\n    if (_utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isArrayBufferView(data)) {\n      return data.buffer;\n    }\n    if (_utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isURLSearchParams(data)) {\n      headers.setContentType('application/x-www-form-urlencoded;charset=utf-8', false);\n      return data.toString();\n    }\n    let isFileList;\n    if (isObjectPayload) {\n      if (contentType.indexOf('application/x-www-form-urlencoded') > -1) {\n        return (0,_helpers_toURLEncodedForm_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])(data, this.formSerializer).toString();\n      }\n      if ((isFileList = _utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isFileList(data)) || contentType.indexOf('multipart/form-data') > -1) {\n        const _FormData = this.env && this.env.FormData;\n        return (0,_helpers_toFormData_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(isFileList ? {\n          'files[]': data\n        } : data, _FormData && new _FormData(), this.formSerializer);\n      }\n    }\n    if (isObjectPayload || hasJSONContentType) {\n      headers.setContentType('application/json', false);\n      return stringifySafely(data);\n    }\n    return data;\n  }</pre>",
+          "_reviveId": 25
+        }
+      }
+    ],
+    "transformResponse": [
+      {
+        "_custom": {
+          "type": "function",
+          "display": "<span style=\"opacity:.5;\">function</span> transformResponse(data)",
+          "tooltip": "<pre>function transformResponse(data) {\n    const transitional = this.transitional || defaults.transitional;\n    const forcedJSONParsing = transitional && transitional.forcedJSONParsing;\n    const JSONRequested = this.responseType === 'json';\n    if (data && _utils_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isString(data) && (forcedJSONParsing && !this.responseType || JSONRequested)) {\n      const silentJSONParsing = transitional && transitional.silentJSONParsing;\n      const strictJSONParsing = !silentJSONParsing && JSONRequested;\n      try {\n        return JSON.parse(data);\n      } catch (e) {\n        if (strictJSONParsing) {\n          if (e.name === 'SyntaxError') {\n            throw _core_AxiosError_js__WEBPACK_IMPORTED_MODULE_5__[\"default\"].from(e, _core_AxiosError_js__WEBPACK_IMPORTED_MODULE_5__[\"default\"].ERR_BAD_RESPONSE, this, null, this.response);\n          }\n          throw e;\n        }\n      }\n    }\n    return data;\n  }</pre>",
+          "_reviveId": 26
+        }
+      }
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {
+      "FormData": {
+        "_custom": {
+          "type": "function",
+          "display": "<span style=\"opacity:.5;\">function</span> FormData()",
+          "tooltip": "<pre>function FormData() { [native code] }</pre>",
+          "_reviveId": 27
+        }
+      },
+      "Blob": {
+        "_custom": {
+          "type": "function",
+          "display": "<span style=\"opacity:.5;\">function</span> Blob()",
+          "tooltip": "<pre>function Blob() { [native code] }</pre>",
+          "_reviveId": 28
+        }
+      }
+    },
+    "validateStatus": {
+      "_custom": {
+        "type": "function",
+        "display": "<span style=\"opacity:.5;\">function</span> validateStatus(status)",
+        "tooltip": "<pre>function validateStatus(status) {\n    return status >= 200 && status < 300;\n  }</pre>",
+        "_reviveId": 29
+      }
+    },
+    "headers": "[object AxiosHeaders]",
+    "method": "get",
+    "url": "https://frontend-test-assignment-api.abz.agency/api/v1/token"
+  },
+  "request": "[object XMLHttpRequest]"
+}

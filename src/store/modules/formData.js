@@ -3,7 +3,7 @@ const formData = {
   state: {
     inpsData: {
       user: {
-        sets: { type: 'text', tabindex: 1, disabled: false, autofocus: true, required: true, },
+        sets: { type: 'text', tabindex: 1, disabled: false, autofocus: false, required: true, },
         name: 'user',
         holder: 'Name',
         inpValue: '',
@@ -25,7 +25,7 @@ const formData = {
         errList: [
           'Field is required',
           'Please enter correct email',
-          'User with this email already exits'
+          'User with this phone or email already exist'
         ]
       },
       phone: { 
@@ -45,9 +45,11 @@ const formData = {
         sets: { type: 'radio', tabindex: 4, disabled: false, autofocus: false, required: true, },
         name: 'radio',
         inpValue: '',
+        valueId: '',
         labels: [],
         err: 0,
-        errList: [ 
+        errList: [
+          'Field is required',
           'Job position is not selected'
         ]
       },
@@ -70,24 +72,20 @@ const formData = {
   },
 
   getters: {
-    jobList: (state, getters, rootState, rootGetters) => {
-      return rootState['serverData'].jobs
-    },
     user: (state) => state.inpsData.user,
     email: (state) => state.inpsData.email,
     phone: (state) => state.inpsData.phone,
     file: (state) => state.inpsData.fileInp,
-
-    radio: (state, getters) => {
-      const inp = state.inpsData.radio
-      const stat = getters.jobList.success === undefined
-      if (stat) inp.labels = undefined
+    radio: (state, getters, rootState, rootGetters) => {
+      const jobs = rootState['serverData'].jobs
+      const radio = state.inpsData.radio
+      if (!jobs.success) radio.labels = undefined
       else {
-        inp.labels = getters.jobList.positions.map(it => {
+        radio.labels = jobs.positions.map(it => {
           return { label: it.name, isChecked: false, disabled: false }
         })
       }
-      return inp
+      return radio
     },
 
     getVals: (state) => {
@@ -113,6 +111,16 @@ const formData = {
     },
     formIsValid: (state, getters) => {
       return !getters.someValsEmpty && !getters.isErrors ? true : false
+    },
+    forUserReg: (state) => {      
+      const inp = state.inpsData
+      const upData = new FormData()
+      upData.append('name', inp.user.inpValue)
+      upData.append('email', inp.email.inpValue)
+      upData.append('phone', inp.phone.inpValue)
+      upData.append('position_id', +inp.radio.valueId)
+      upData.append('photo', inp.fileInp.inpValue)
+      return upData
     }
   },
 
@@ -122,13 +130,45 @@ const formData = {
       inpData.err = newData.err
       inpData.inpValue = newData.inpValue
       if (newData.fileName) { inpData.fileName = newData.fileName }
+      if (newData.valueId) { inpData.valueId = newData.valueId}
     },
+    setRespErr: (state, err) => {
+      const inp = state.inpsData
+      if (err == 422) {
+        inp.name.err = 2
+        inp.email.err = 2
+        inp.phone.err = 2
+        inp.photo.err = 2
+        inp.radio.err = 2
+      }
+      if (err == 409) {
+        inp.email.err = 3
+        inp.phone.err = 3
+      }
+      if (err == 401) {
+        return
+      }
+    },
+    clearForm: (state) => {
+      let inps = state.inpsData
+      for (const inp in inps) {
+        inps[inp].inpValue = ''
+        inps[inp].err = 0
+      }
+    }
   },
   
   actions: {
     setInpData({ commit }, data) {
       commit('setInpData', data)
+    },
+    setRespErr({ commit }, err) {
+      commit('setRespErr', err)
+    },
+    clearForm({commit}) {
+      commit('clearForm')
     }
+
   }
 }
 export default formData

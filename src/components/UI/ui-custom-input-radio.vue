@@ -48,6 +48,7 @@ export default {
       const upData = {}
       upData.name = this.inputData.name
       upData.inpValue = ev.target.value
+      upData.valueId = +ev.target.id + 1
       upData.err = 0
       this.$store.dispatch('formData/setInpData', upData)
     }

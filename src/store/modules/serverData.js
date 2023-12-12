@@ -5,61 +5,78 @@ const serverData = {
   state () {    
     return {
       serverResp: '',
-      users: {
-        links: { next_url: null }
+      error: '',
+      users: {},
+      count: 6,
+      jobs: { 
+        success: true, 
+        positions: [{"id":1,"name":"Lawyer"},{"id":2,"name":"Content manager"},{"id":3,"name":"Security"},{"id":4,"name":"Designer"}] 
       },
-      jobs: {},
-      // jobs: { success: true, positions: [{"id":1,"name":"Lawyer"},{"id":2,"name":"Content manager"},{"id":3,"name":"Security"},{"id":4,"name":"Designer"}] },
-      nav: {
-        urlUsers: 'https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6',
-        urlJobs: 'https://frontend-test-assignment-api.abz.agency/api/v1/positions'
-      },
-
-      loadStat: {},
-
-      respCodes: {
-        401: 'Request failed. Status 401',
-        409: 'User already exist',
-        422: 'Validation failed'
-      },
+      urls: {
+        urlStart: 'https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6',
+        urlJobs: 'https://frontend-test-assignment-api.abz.agency/api/v1/positions',
+        urlUsers: 'https://frontend-test-assignment-api.abz.agency/api/v1/users',
+      }
     }
   },
 
   getters: {
-    users: (state) => state.users.users,
+    nextUrl: (state) => {
+      const tUsers = state.users.total_users
+      const totalPages = Math.ceil(tUsers / state.count)
+      const nextPage = +state.users.page + 1
+      return nextPage <= totalPages ? `https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${nextPage}&count=${state.count}` : null
+    },
+    users: (state, rootState, rootGetters) => {
+      if (!state.users.success) {
+        return rootGetters['mockData'].users.users
+      } else return state.users.users
+    },
+
     respCode: (state) => state.serverResp.status,
     loadStat: (state) => state.loadStat,
-    nav: (state) => state.nav,
-    nextUrl: (state) => state.users.links.next_url
+    urls: (state) => state.urls,
+    
+    // nextUrl: (state, rootState, rootGetters) => {
+    //   if (!state.users.success) {
+    //     return rootGetters['mockData'].next_url
+    //   } else return state.users.links.next_url
+    // }
   },
 
   mutations: {
     setServerResp: (state, resp) => state.serverResp = resp,
-
-    saveRespData: (state, dt) => {
-      state[dt.idn] = dt.res
-    },
-    setLoadStat: (state, load) => { state.loadStat = { idn: load.idn, isON: load.isON } },
+    saveRespData: (state, dt) => state[dt.idn] = dt.res,
+    saveErr: (state, err) => state.error = err,
   },
 
   actions: {
-    getFromServ({commit}, pld) {
-      // console.log('Payload received', pld)
-
-      commit('setLoadStat', { idn: pld.idn, isON: true })
+    getFromServ({commit, state, getters }, pld) {
+      const goToPage = state.goToPage
       return axios.get(pld.url)
       .then(resp => {
         commit('setServerResp', resp)
         if (resp.status === 200) {
           const dt = { res: resp.data, idn: pld.idn }
           commit('saveRespData', dt)
-          commit('setLoadStat', { idn: pld.idn, isON: false })
         }
       })
-      .catch((err) => console.err('* Server resp Err *', err))
-    },
-    
+      .catch((err) => commit('saveErr', err))
+    }
   }
+  // Initially ****** don't delete !!!!!!!!
+  //   getFromServ({commit}, pld) {
+  //     // console.log('GET Payload received', pld)
+  //     return axios.get(pld.url)
+  //     .then(resp => {
+  //       commit('setServerResp', resp)
+  //       if (resp.status === 200) {
+  //         const dt = { res: resp.data, idn: pld.idn }
+  //         commit('saveRespData', dt)
+  //       }
+  //     })
+  //     .catch((err) => commit('saveErr', err))
+  //   }
+  // }
 }
-
 export default serverData
