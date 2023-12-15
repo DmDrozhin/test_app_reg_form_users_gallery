@@ -2,9 +2,9 @@
   <div class="ui-comp-user-card card">
     <div class="card__container">
       <div class="card__wrapper user">
-        <div class="user__reg-date">{{ date }}</div>
+        <!-- <div class="user__reg-date">{{ date }}</div> -->
         <div class="user__photo">
-          <img v-src-exceptions="userCard.photo" alt="user photo">
+          <img v-src-exceptions="photo" @error="handleErr"  alt="user photo">
           <!-- <img :src="photo" @error="handleErr" alt="user photo"> -->
         </div>
         
@@ -61,7 +61,6 @@ export default {
   methods: {
     handleErr(ev) { 
       this.isImgOk = false
-      // ev.target.src = this.altImg
     },
     handleHover(ev) {
       if (ev.target.id === '') return

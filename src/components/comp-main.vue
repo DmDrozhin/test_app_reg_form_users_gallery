@@ -1,16 +1,18 @@
 <template>
   <main class="comp-main main" id="main">
     <div class="main__container">
-      <ui-loader class="main__loader" v-if="false"></ui-loader>
       <div class="main__wrapper">
         <h1 class="main__title">{{ title }}</h1>
         <div class="main__gallery" v-if="users">
-          <ui-comp-user-card
-            class="main__ui-card"
-            v-for="card in users"
-            :key="card.id"
-            :userCard="card"
-          ></ui-comp-user-card>
+          <transition-group name="user-cards" appear>
+            <ui-comp-user-card
+              class="main__ui-card"
+              v-for="(card, idx) in users"
+              :key="card.id"
+              :userCard="card"
+              :style="`--i: ${idx}`"
+            ></ui-comp-user-card>
+          </transition-group>
         </div>
         <div class="main__err-msg" v-else>{{ errMessage }}</div>
         <ui-button-main 
@@ -36,14 +38,13 @@ export default {
   data() {
     return{
       title: 'Working with GET request',
-      errMessage: 'Users info hasn\'t been loaded',
+      errMessage: 'Users info hasn\'t been loaded'
     }
   },
   computed: {
     ...mapGetters('serverData', ['users', 'urls', 'nextUrl']),
 
     next() { return this.nextUrl === null ? false : true },
-    // isLoader() { return this.loadStat.idn === 'users' ? this.loadStat.isON : false }
   },
 
   methods: {
@@ -51,7 +52,7 @@ export default {
 
     handleClick() {
       if (this.next) this.getFromServ({ url: this.nextUrl, idn: 'users' })
-    },
+    }
   },
 
   mounted() {
@@ -68,15 +69,9 @@ export default {
   // background-color: #a3edcd;
   padding: 70px 0;
   &__container {
-    position: relative;
     @include container-width;
     margin: 0 auto;
     // @include gide-lines;
-  }
-  &__loader {
-    position: absolute;
-    top: 3rem;
-    right: 3rem;
   }
   &__wrapper {
     width: inherit;
@@ -94,12 +89,12 @@ export default {
     margin-bottom: 50px;
   }
   &__gallery {
-    width: inherit;
     flex: 1;
+    width: inherit;
+    margin-bottom: 50px;
     display: grid;
     @include main-gallery;
     grid-auto-flow: row;
-    margin-bottom: 50px;
   }
   &__err-msg {
     @include body16;
@@ -116,6 +111,14 @@ export default {
   .ui-button-main, .button:hover {
     cursor: pointer;
 
+  }
+  .user-cards-enter-active {
+    transition: all 0.4s ease;
+    transition-delay: calc(0.1s * var(--i));
+  }
+  .user-cards-enter-from {
+    transform: scale(0.5);
+    opacity: 0.5;
   }
 }
 </style>

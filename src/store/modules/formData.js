@@ -5,7 +5,7 @@ const formData = {
       user: {
         sets: { type: 'text', tabindex: 1, disabled: false, autofocus: false, required: true, },
         name: 'user',
-        holder: 'Name',
+        holder: 'Your name',
         inpValue: '',
         regex: /^(?=.*[A-Za-z0-9]).{3,60}$/,
         err: 0,

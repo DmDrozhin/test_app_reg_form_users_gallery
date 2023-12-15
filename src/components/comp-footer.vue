@@ -2,13 +2,11 @@
   <footer class="comp-footer footer" id="footer">
     <transition-group name="fade" :key="252">
       <div class="footer__container" v-if="!this.codeUser">
-        <ui-loader class="footer__loader" v-if="isLoaderOn"></ui-loader>
         <div class="footer__post-form block">
-
-        <div class="block__wrapper">
-          <div class="block__title">{{ formTitle }}</div>
-          <div class="block__container">
-            <form 
+          <div class="block__wrapper">
+            <div class="block__title">{{ formTitle }}</div>
+            <div class="block__container">
+              <form 
               class="block__ui-form ui-form" 
               name="user-post" 
               @submit.prevent.stop enctype="multipart/form-data"
@@ -51,13 +49,11 @@
               ></ui-button-main>
 
             </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
     </transition-group>
-
     <transition name="fade">
       <ui-comp-reg-success v-if="this.codeUser"></ui-comp-reg-success>
     </transition>
@@ -74,7 +70,6 @@ export default {
   data() {
     return {
       formTitle: 'Working with POST request',
-      isLoaderOn: false,
       test: false
     }
   },
@@ -124,13 +119,11 @@ export default {
 .comp-footer,
 .footer {
   background-color: $bg-color1;
-
-  // background-color: #d69696;
   &__container {
     padding: 70px 0 100px 0;
     position: relative;
     @include container-width;
-    // margin: 0 auto;
+    margin: 0 auto;
   }
 
   &__loader {
@@ -141,7 +134,6 @@ export default {
 
   &__post-form,
   .block {
-
     // &__wrapper {
     // }
     // border: 1px solid orange;

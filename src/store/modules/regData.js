@@ -15,6 +15,7 @@ const regData = {
       user: { response: { status: '' } },
       token: { status: '' }
     },
+    isLoading: false
   },
 
   getters: {
@@ -25,24 +26,24 @@ const regData = {
 
     codeUser: (state) => state.response.user.status === 200,
     errUser: (state) => state.response.errors.user.status,
+
+    isLoading: (state) => state.isLoading
   },
 
   mutations: {
-    saveResp: (state, dt) => {
-      state.response[dt.idn] = dt.res
-    },
-    saveErr: (state, err) => {
-      state.errors[err.idn] = err.res
-    },
+    saveResp: (state, dt) => state.response[dt.idn] = dt.res,
+    saveErr: (state, err) => state.errors[err.idn] = err.res,
     clear: (state) => {
       state.response = {}
       state.errors = {}
-    }
+    },
+    setLoader: (state, val) => state.isLoading = val
   },
 
   actions: {
     getToken({ commit, state }) {
       // commit('clear')
+      commit('setLoader', true)
       return axios.get(state.urls.urlToken)
       .then(resp => {
         if (resp.status === 200) {
@@ -51,42 +52,36 @@ const regData = {
           commit('saveResp', dt)
         }
       })
+      .then(() => commit('setLoader', false))
       .catch((err) => {
         const dt = { res: err, idn: 'token'}
         commit('saveErr', dt)
-        // console.log('Err receiving *Token', err)
+        console.log('Err receiving *Token', err)
       })
+      
+
     },
     
     postNewUser({ commit, state, getters, rootState, rootGetters }) {
       const upData = rootGetters['formData/forUserReg']
       const url = state.urls.urlReg
       const token = getters.token
+      commit('setLoader', true)
       return axios({
         url: url,
         method: 'POST',
         data: upData,
         headers: { 'Content-Type': 'multipart/form-data', Token: token }
       })
-      // const upData = rootGetters['formData/forUserReg']
-      // const url = state.urls.urlReg
-      // const token = getters.token
-      // return axios({
-      //   url: url,
-      //   method: 'POST',
-      //   data: upData,
-      //   headers: { 'Content-Type': 'multipart/form-data', Token: token }
-      // })
       .then(resp => {
         if (resp.status = 200) {
-          // console.log(resp)
           const dt = { res: resp, idn: 'user' }
           commit('saveResp', dt)
           return true
         }
       })
+      .then(() => commit('setLoader', false))
       .catch((err) => {
-        // console.log(err)
         const dt = { res: err, idn: 'user'}
         commit('saveErr', dt)
         const code = err.response.status

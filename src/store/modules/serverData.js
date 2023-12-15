@@ -16,7 +16,8 @@ const serverData = {
         urlStart: 'https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6',
         urlJobs: 'https://frontend-test-assignment-api.abz.agency/api/v1/positions',
         urlUsers: 'https://frontend-test-assignment-api.abz.agency/api/v1/users',
-      }
+      },
+      isLoading: false
     }
   },
 
@@ -27,15 +28,11 @@ const serverData = {
       const nextPage = +state.users.page + 1
       return nextPage <= totalPages ? `https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${nextPage}&count=${state.count}` : null
     },
-    users: (state, rootState, rootGetters) => {
-      if (!state.users.success) {
-        return rootGetters['mockData'].users.users
-      } else return state.users.users
-    },
-
+    users: (state) => state.users.users,
     respCode: (state) => state.serverResp.status,
     loadStat: (state) => state.loadStat,
     urls: (state) => state.urls,
+    isLoading: (state) => state.isLoading
     
     // nextUrl: (state, rootState, rootGetters) => {
     //   if (!state.users.success) {
@@ -48,11 +45,13 @@ const serverData = {
     setServerResp: (state, resp) => state.serverResp = resp,
     saveRespData: (state, dt) => state[dt.idn] = dt.res,
     saveErr: (state, err) => state.error = err,
+    setLoader: (state, val) => state.isLoading = val
   },
 
   actions: {
-    getFromServ({commit, state, getters }, pld) {
-      const goToPage = state.goToPage
+    getFromServ({commit}, pld) {
+      // console.log('GET Payload received', pld)
+      commit('setLoader', true)
       return axios.get(pld.url)
       .then(resp => {
         commit('setServerResp', resp)
@@ -61,22 +60,9 @@ const serverData = {
           commit('saveRespData', dt)
         }
       })
+      .then(() => commit('setLoader', false))
       .catch((err) => commit('saveErr', err))
     }
   }
-  // Initially ****** don't delete !!!!!!!!
-  //   getFromServ({commit}, pld) {
-  //     // console.log('GET Payload received', pld)
-  //     return axios.get(pld.url)
-  //     .then(resp => {
-  //       commit('setServerResp', resp)
-  //       if (resp.status === 200) {
-  //         const dt = { res: resp.data, idn: pld.idn }
-  //         commit('saveRespData', dt)
-  //       }
-  //     })
-  //     .catch((err) => commit('saveErr', err))
-  //   }
-  // }
 }
 export default serverData

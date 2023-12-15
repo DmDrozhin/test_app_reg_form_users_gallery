@@ -2,11 +2,9 @@
   <div class="ui-comp-nav-menu menu">
     <div class="menu__container">
       <div class="menu__wrapper">
-
         <a href="#header">
           <div class="menu__img"></div>
         </a>
-        
         <div class="menu__nav nav">
           <a href="#main">
             <ui-button-main
@@ -17,7 +15,6 @@
                 {{ btnNav1Name }}
               </ui-button-main>
           </a>
-
           <a href="#footer">
             <ui-button-main
               class="menu__ui-button"
@@ -27,7 +24,6 @@
               {{ btnNav2Name }}
             </ui-button-main>
           </a>
-
         </div>
       </div>
     </div>
