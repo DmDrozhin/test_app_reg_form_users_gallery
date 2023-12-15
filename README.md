@@ -1,4 +1,16 @@
-# 2023-11-29_abz-agency-test
+# Test work. User cards gallery. New user registration form
+The following tools were used to carry out the task:
+SDK:  Visual Studio Code
+Framework: Vue 3 CLI
+Main libraries: Vue Router, Vuex
+Add-on labs: Axios, Normalise.css, .Env
+Scripts lang:  JS, Styles: SCSS
+-	Implemented a single page application (SPA) concept using the Vue Router library, allowing the application to be converted to a multi-page application without complex refactoring.
+-	The Vuex state management library is used to centrally retrieve, store and process data. The data is segmented by topic into namespaced modules.
+-	The structure of the application follows the idea of compact, reusable components that can be reused without complex re-adjustments.
+-	The Axios library is used for asynchronous fetching and posting of data (stable and widespread solution).
+-	The Normilze.css library helps to avoid unwanted styling of DOM elements by browsers.
+
 
 ## Project setup
 ```
