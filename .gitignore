@@ -2,8 +2,8 @@
 node_modules
 /dist
 /temp
-assets_from_abz-agency
-resp_objects
+/assets_from_abz-agency
+/resp_objects
 
 # local env files
 .env.local
