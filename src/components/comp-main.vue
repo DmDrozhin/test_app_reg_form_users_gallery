@@ -62,21 +62,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .comp-main, 
 .main {
   background-color: $bg-color1;
-  // background-color: #a3edcd;
   padding: 70px 0;
   &__container {
     @include container-width;
     margin: 0 auto;
-    // @include gide-lines;
   }
   &__wrapper {
     width: inherit;
-    // @include gide-lines;
-    // border: 1px solid teal;
     @include gallery-container;
     display: flex;
     flex-direction: column;
@@ -100,11 +95,8 @@ export default {
     @include body16;
     color: $error;
     text-align: center;
-    // margin-bottom: 50px;
   }
-  // &__button {
-
-  // }
+  // &__button { }
   .ui-button-main, .button {
     width: 120px;
   }

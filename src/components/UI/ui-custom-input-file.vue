@@ -103,15 +103,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
-
 .ui-custom-input-file,
 .ui-input {
-
   &__container {
     position: relative;
   }
-
   &__ui-label,
   .ui-label {
     height: 54px;

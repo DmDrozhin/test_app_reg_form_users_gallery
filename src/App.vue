@@ -30,7 +30,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
   .app {
     position: relative;
     &__nav,
@@ -45,9 +44,7 @@ export default {
         margin: 0 auto;
         @include container-width;
       }
-      // &__ui-nav {
-
-      // }
+      // &__ui-nav { }
       &__loader {
         position: fixed;
         top: calc(100vh / 2);

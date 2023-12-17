@@ -34,7 +34,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .comp-header, 
   .block {
   padding-top: $nav-height;
@@ -59,8 +58,6 @@ export default {
       @include media('min', 'md') { width: 380px; }
       text-align: center;
       color: #fff;
-      // border: 2px dotted hotpink;
-
     }
     &__title {
       @include heading1;
@@ -79,7 +76,6 @@ export default {
       margin: 0 auto;
     }
   }
-
 }
 
 

@@ -34,7 +34,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .ui-button-main, 
 .button {
   border: none;

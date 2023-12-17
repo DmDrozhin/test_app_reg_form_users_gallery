@@ -53,7 +53,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .ui-comp-nav-menu, 
 .menu {
   background-color: $bg-color2;

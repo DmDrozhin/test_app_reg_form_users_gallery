@@ -114,8 +114,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
-
 .comp-footer,
 .footer {
   background-color: $bg-color1;
@@ -134,9 +132,7 @@ export default {
 
   &__post-form,
   .block {
-    // &__wrapper {
-    // }
-    // border: 1px solid orange;
+    // &__wrapper { }
     &__title {
       text-align: center;
       @include heading1;
@@ -144,9 +140,7 @@ export default {
     }
 
     &__container {
-      position: relative; // ?
-      // @include gide-lines;
-      // width: 380px;
+      // position: relative; // ?
       margin: 0 auto;
 
       @include media('min', 'sm') {
@@ -156,8 +150,6 @@ export default {
       @include media('min', 'md') {
         width: 380px;
       }
-
-      // margin: auto;
     }
 
     &__ui-form,
@@ -173,10 +165,7 @@ export default {
       &__phone {
         margin-bottom: 43px;
       }
-
-      // &__radio-wrapper {
-
-      // }
+      // &__radio-wrapper { }
       &__radio-title {
         @include body16;
         margin-bottom: 10px;

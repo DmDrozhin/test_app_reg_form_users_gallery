@@ -28,7 +28,6 @@ export default {
 
 </script>
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .ui-hint-top, 
 .hint {
   max-width: inherit;
@@ -36,7 +35,6 @@ export default {
     z-index: 10;
     position: absolute;
     width: 100%;
-    // border: 1px dotted rgb(0, 42, 255);
     top: -10px;
     left: 0;
     text-align: left;

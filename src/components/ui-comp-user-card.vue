@@ -78,7 +78,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .ui-comp-user-card,
 .card {
   height: 254px;
@@ -93,7 +92,6 @@ export default {
     position: relative;
     max-width: inherit;
     padding: 20px;
-    // border: 1px solid hotpink;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -153,12 +151,10 @@ export default {
         @include txt-ellipsis;
         padding: 3px 16px;
         z-index: 5;
-        // display: none;
       }
     }
     &__phone {
       @include body16;
-      // @include txt-ellipsis;
     }
   }
 }

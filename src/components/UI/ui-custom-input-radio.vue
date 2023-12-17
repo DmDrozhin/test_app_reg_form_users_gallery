@@ -57,13 +57,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .ui-custom-input-radio {
   // $color1: #f4f4f4;
   $color1:  #F8F8F8;
   $color2: $secondary;
   // .container {
-
   // }
   .radio {
     margin-bottom: 7px;

@@ -28,13 +28,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .main-page, 
 .page {
   &__container {
     height: 100%;
     scroll-behavior: smooth;
-    // @include tech-mark;
   }
 }
 </style>

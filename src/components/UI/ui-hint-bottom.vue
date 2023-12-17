@@ -25,14 +25,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .ui-hint-bottom, 
 .hint {
   max-width: inherit;
   &__wrapper {
     position: absolute;
     width: 100%;
-    // border: 1px dotted rgb(0, 42, 255);
     bottom: -20px;
     left: 0;
     text-align: left;

@@ -3,10 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import drs from './directives'
-// import comps from '@/components'
 import ui from '@/components/UI'
-// const uiComps = [...comps, ...ui]
-import '@/styles/main.scss'
 
 const app = createApp(App)
 

@@ -30,19 +30,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
-
 #ui-loader {
   animation: rotate 1s linear infinite;
   transform-origin: 50% 50%;
   transform-box: fill-box;
 }
-
 @keyframes rotate {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
