@@ -11,7 +11,6 @@
 //   overflow-padding-behavior-bottom: strict;
 // }
 
-
 * {
   font-family: 'Nunito-Regular', sans-serif;
   @include body16;
@@ -21,18 +20,19 @@
 }
 
 html {
-  height: 100hv;
+  height: 100%;
   height: -webkit-fill-available;
   width: 100%;
   scroll-behavior: smooth;
+  background-color: $bg-color1;
 }
 
 body {
-  height: 100%;
+  height: inherit;
   // mobile viewport bug fix */
   min-height: -webkit-fill-available;
   background-color: $bg-color1;
-  scroll-behavior: smooth!important;
+  scroll-behavior: smooth;
 }
 
 a {

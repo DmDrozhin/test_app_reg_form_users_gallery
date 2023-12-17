@@ -31,7 +31,9 @@ export default {
 
 <style lang="scss" scoped>
   .app {
+    height: 100%;
     position: relative;
+    background-color: $bg-color1;
     &__nav,
     .nav {
       position: fixed;
@@ -53,7 +55,7 @@ export default {
       }
     }
     &__container {
-      height: 100vh;
+      height: inherit;
       @include general-width;
       margin: 0 auto;
     }
