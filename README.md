@@ -15,14 +15,15 @@ The application performs the following actions according to the task requirement
 - надсилає дані до бекенду
 - отримує та відображує оновлені дані
   
-Applied tools:
-SDK - Visual Studio Code
-Framework - Vue 3 CLI
-Main libraries - Vue Router, Vuex
-Add-ons: Axios
-Lang: JS, Styles: SCSS
-Verification: Pixel Perfect, LightHouse, GT Metrix
+# Applied tools:
+- SDK - Visual Studio Code
+- Framework - Vue 3 CLI
+- Main libraries - Vue Router, Vuex
+- Add-ons: Axios
+- Lang: JS, Styles: SCSS
+- Verification: Pixel Perfect, LightHouse, GT Metrix
 
+# Detailed description
 -	Implemented a single page application (SPA) concept using the Vue Router library, allowing the application to be converted to a multi-page application without complex refactoring.
 -	The Vuex state management library is used to centrally retrieve, store and process data. The data is segmented by topic into namespaced modules.
 -	The structure of the application follows the idea of compact, reusable components that can be reused without complex re-adjustments.
