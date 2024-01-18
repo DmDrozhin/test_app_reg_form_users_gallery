@@ -1,10 +1,27 @@
-# Test work. User cards gallery. New user registration form
-The following tools were used to carry out the task:
-SDK:  Visual Studio Code
-Framework: Vue 3 CLI
-Main libraries: Vue Router, Vuex
-Add-on labs: Axios, Normalise.css, .Env
-Scripts lang:  JS, Styles: SCSS
+# Vue.js applicant testing work. 
+The application performs the following actions according to the task requirements and provided Figma mackups:
+- retreives user data from backend with GET request
+- controlls pagination and navigation
+- retreives tocken from backend for registration of new user
+- validates data entered by user (img file check for size, gabarites, format)
+- sends registration data to backend with POST request
+- retreives and render obtained users data
+# Vue.js розробник - тестова робота.
+- Додаток виконує наступні дії згідно до вимог тествого завдання та наданих макетів у Figma:
+- отримує дані користувачів у вигляді масиву об'єктів з бекенду
+- виконує пагінацію та навігацію
+- отримує токен з бекенду для подальшої реєстарції нового користувача
+- перевіряє відопвідність введених даних в т.ч. файл - зображення на фактичні розміри, об'єм та формат
+- надсилає дані до бекенду
+- отримує та відображує оновлені дані
+  
+Applied tools:
+SDK - Visual Studio Code
+Framework - Vue 3 CLI
+Main libraries - Vue Router, Vuex
+Add-ons: Axios
+Lang: JS, Styles: SCSS
+Verification: Pixel Perfect, LightHouse, GT Metrix
 
 -	Implemented a single page application (SPA) concept using the Vue Router library, allowing the application to be converted to a multi-page application without complex refactoring.
 -	The Vuex state management library is used to centrally retrieve, store and process data. The data is segmented by topic into namespaced modules.
