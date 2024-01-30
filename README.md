@@ -15,7 +15,7 @@ The application performs the following actions according to the task requirement
 - надсилає дані до бекенду
 - отримує та відображує оновлені дані
   
-# Applied tools:
+# Tech stack:
 - SDK - Visual Studio Code
 - Framework - Vue 3 CLI
 - Main libraries - Vue Router, Vuex
